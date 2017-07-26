@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>信息的表示和处理 | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">信息的表示和处理</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-history"> 历史</i></a><a href="/comment/"><i class="fa fa-comment"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">信息的表示和处理</h1><div class="post-meta">Jul 26, 2017<span> | </span><span class="category"><a href="/categories/CSAPP笔记/">CSAPP笔记</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a data-disqus-identifier="2017/07/26/信息的表示和处理/" href="/2017/07/26/信息的表示和处理/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h1 id="信息的表示和处理"><a href="#信息的表示和处理" class="headerlink" title="信息的表示和处理"></a>信息的表示和处理</h1><h2 id="1-整数表示"><a href="#1-整数表示" class="headerlink" title="1.整数表示"></a>1.整数表示</h2><p>本文约定,默认是二进制编码表示, 表现形式为X的向量组$[x<em>{w-1} x</em>{w-2} … x_0]$ , w默认为32.</p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>信息的表示和处理 | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">信息的表示和处理</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-history"> 历史</i></a><a href="/comment/"><i class="fa fa-comment"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">信息的表示和处理</h1><div class="post-meta">Jul 26, 2017<span> | </span><span class="category"><a href="/categories/CSAPP笔记/">CSAPP笔记</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a data-disqus-identifier="2017/07/26/信息的表示和处理/" href="/2017/07/26/信息的表示和处理/#disqus_thread" class="disqus-comment-count"></a><div class="post-content"><h1 id="信息的表示和处理"><a href="#信息的表示和处理" class="headerlink" title="信息的表示和处理"></a>信息的表示和处理</h1><h2 id="1-整数表示"><a href="#1-整数表示" class="headerlink" title="1.整数表示"></a>1.整数表示</h2><p>本文约定,默认是二进制编码表示, 表现形式为X的向量组$[x_{w-1} x_{w-2} … x_0]$ , w默认为32.</p>
 <ul>
 <li><p>无符号数</p>
 <p>无符号数指大于等于0的整数.比如10表示为</p>
@@ -8,7 +8,7 @@
 <li><p>有符号数</p>
 <p>有符号数能表示负数和非负数,一般采用补码(two’s-complement),比如-10表示为</p>
 <p>$$[11111111111111111111111111110110]$$</p>
-<p>则计算方式为<br>$$<br>Y = -x<em>{w-1} 2^{w-1} + \sum</em>{i=0}^{w-2} x_i 2^{i}<br>$$</p>
+<p>则计算方式为<br>$$<br>Y = -x_{w-1} 2^{w-1} + \sum_{i=0}^{w-2} x_i 2^{i}<br>$$</p>
 </li>
 <li><p>相互转换</p>
 <p>无符号数与有符号树相互转换,位不变,只是改变了解释的方式.</p>
@@ -16,14 +16,14 @@
 <li><p>扩展</p>
 <p>为了简单,我们假设将w=8,扩展到16,符号$\cdot$之前的是扩展的位</p>
 <ul>
-<li><p>无符号数扩展<br>$$<br>[x<em>{w-1}x</em>{w-2}…x<em>0] \to^{extend} [00000000 \cdot x</em>{w-1}x_{w-2}…x_0]<br>$$</p>
+<li><p>无符号数扩展<br>$$<br>[x_{w-1}x_{w-2}…x_0] \to^{extend} [00000000 \cdot x_{w-1}x_{w-2}…x_0]<br>$$</p>
 </li>
-<li><p>有符号数扩展<br>$$<br>[x<em>{w-1}x</em>{w-2}…x<em>0] \to^{extend} [x</em>{w-1}x<em>{w-1}x</em>{w-1}x<em>{w-1}x</em>{w-1}x<em>{w-1}x</em>{w-1}x<em>{w-1}\cdot x</em>{w-1}x_{w-2}…x_0]<br>$$</p>
+<li><p>有符号数扩展<br>$$<br>[x_{w-1}x_{w-2}…x_0] \to^{extend} [x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}\cdot x_{w-1}x_{w-2}…x_0]<br>$$</p>
 </li>
 </ul>
 </li>
 <li><p>截断</p>
-<p>截断和扩展相反.设K为截断的位.无符号数和有符号数都是相同的操作,截断后的数按照之前的数表示方式来解释.<br>$$<br>[x<em>{k-1}x</em>{k-1}x<em>{k-2}x</em>{k-3}\dots x<em>{0}\cdot x</em>{w-1}x_{w-2}…x<em>0]\to^{trunc} [x</em>{w-1}x_{w-2}…x_0]<br>$$</p>
+<p>截断和扩展相反.设K为截断的位.无符号数和有符号数都是相同的操作,截断后的数按照之前的数表示方式来解释.<br>$$<br>[x_{k-1}x_{k-1}x_{k-2}x_{k-3}\dots x_{0}\cdot x_{w-1}x_{w-2}…x_0]\to^{trunc} [x_{w-1}x_{w-2}…x_0]<br>$$</p>
 </li>
 </ul>
 <h2 id="2-整数运算"><a href="#2-整数运算" class="headerlink" title="2. 整数运算"></a>2. 整数运算</h2><ul>
@@ -34,10 +34,7 @@
 <p>设有符号数$s_1$和$s_2$,$U2S$是无符号转成有符号,$S2U$是有符号转成无符号,则<br>$$<br>s_1 + s_2 = U2S((S2U(s_1)+S2U(s_2))\mod 2^w)<br>$$</p>
 </li>
 <li><p>补码的非</p>
-<p>对于补码$x$,则补码的非为<br>$$</p>
-<ul>
-<li>x = \begin{cases}<br>-2^{w-1} ,&amp;\quad x = -2^{w-1}<br>\<br>-x, &amp;\quad x &gt; -2^{w-1}<br>\end{cases}<br>$$</li>
-</ul>
+<p>对于补码$x$,则补码的非为<br>$$<br>-x = \begin{cases}<br>-2^{w-1} ,&amp;\quad x = -2^{w-1}<br>\\<br>-x, &amp;\quad x &gt; -2^{w-1}<br>\end{cases}<br>$$</p>
 </li>
 <li><p>无符号乘法</p>
 <p>设无符号数$u_1$和$u_2$,则<br>$$<br>u_1 \cdot u_2 = (u_1 \cdot u_2)  \mod 2^w<br>$$</p>
@@ -56,7 +53,7 @@
 </li>
 <li><p>有符号数</p>
 <p>采用算术右移操作,但是计算机除法会造成舍入操作,比如会把-5/2舍入为-3,结果应该是-2.为处理这种情况,我们需要偏置这个除数.</p>
-<p>原理:$\lceil x/y \rceil = \lfloor (x+y-1)/y\rfloor$ ,故整个公式为<br>$$<br>x/2^k = \begin{cases}<br>x &gt;&gt;&gt; k,&amp;\quad x &gt;= 0<br>\<br>(x + (1 &lt;&lt; k) + 1) &gt;&gt;&gt; k, &amp;\quad x &lt; 0<br>\end{cases}<br>$$</p>
+<p>原理:$\lceil x/y \rceil = \lfloor (x+y-1)/y\rfloor$ ,故整个公式为<br>$$<br>x/2^k = \begin{cases}<br>x &gt;&gt;&gt; k,&amp;\quad x &gt;= 0<br>\\<br>(x + (1 &lt;&lt; k) + 1) &gt;&gt;&gt; k, &amp;\quad x &lt; 0<br>\end{cases}<br>$$</p>
 </li>
 </ul>
 </li>
@@ -82,12 +79,13 @@
 <p>| s(31)   | exp(30:23) | frac(22:0) |<br>| ——- | ———- | ———- |<br>| $s = 1$ | $k = 8$    | $n = 23$   |</p>
 <p>double:</p>
 <p>| s(63)   | exp(62:52) | frac(51:0) |<br>| ——- | ———- | ———- |<br>| $s = 1$ | $k = 11$   | $n = 52$   |</p>
+<p>| a |<br>| –|<br>| b | </p>
 </li>
 </ul>
 <p>根据exp的值,被编码的值可以分为三种不同的情况(最后一种情况有2个变种),以float为例:</p>
 <ol>
 <li><p>规格化的,位表示如下$[s|\ne 0 \&amp; \ne 255|frac]$ </p>
-<p>这种情况下,阶码字段被解释为<em>偏置</em>(biased)形式表示的有符号数整数.也就是说$E = e - Bias$, 其中$e$是无符号数,就是上文提到的$exp$, $Bias$是一个等于$2^{k-1}-1$的偏置值.对小数字段$frac$的解释为描述小数值$f$,其中$0 \le f \lt 1$,其二进制表示为$[0.f_{n-1}\cdots f_1 f_2]$.尾数定义为$M = 1 + f$.</p>
+<p>这种情况下,阶码字段被解释为_偏置_(biased)形式表示的有符号数整数.也就是说$E = e - Bias$, 其中$e$是无符号数,就是上文提到的$exp$, $Bias$是一个等于$2^{k-1}-1$的偏置值.对小数字段$frac$的解释为描述小数值$f$,其中$0 \le f \lt 1$,其二进制表示为$[0.f_{n-1}\cdots f_1 f_2]$.尾数定义为$M = 1 + f$.</p>
 </li>
 <li><p>非规格化的.位表示为$[s|00000000|frac]$</p>
 <p>在这种情况下, 阶码值是$E = 1 - Bias$, 而尾数的值是$M = f$</p>
@@ -102,7 +100,7 @@
 </li>
 </ul>
 <h2 id="4-浮点数舍入"><a href="#4-浮点数舍入" class="headerlink" title="4.浮点数舍入"></a>4.浮点数舍入</h2><p>​    浮点数默认舍入方式是向偶数舍入 </p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2017/07/26/信息的表示和处理/" data-id="cj5kyoy8y0000lml23yovq10i" class="article-share-link">分享</a><div class="tags"><a href="/tags/C-链接-Linux-ELF/">C 链接 Linux ELF</a></div><div class="post-nav"><a href="/2017/06/19/red-black-tree-md/" class="next">RED-BLACK-TREE(红黑树)</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'yuanmie';
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2017/07/26/信息的表示和处理/" data-id="cj5kz8ff40007f4l28aw3qlns" class="article-share-link">分享</a><div class="tags"><a href="/tags/C-链接-Linux-ELF/">C 链接 Linux ELF</a></div><div class="post-nav"><a href="/2017/06/19/red-black-tree-md/" class="next">RED-BLACK-TREE(红黑树)</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'yuanmie';
 var disqus_identifier = '2017/07/26/信息的表示和处理/';
 var disqus_title = '信息的表示和处理';
 var disqus_url = 'http://yoursite.com/2017/07/26/信息的表示和处理/';
