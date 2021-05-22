@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML CSS JavaScript NodeJS ELectron React Webpack Babel," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习前端的一些笔记. HTML5 存储  session storage 会话存储，在整个会话区间有效 local storage 存储在本地浏览器上，所有人都能访问  代码示例: 1234storage.setItem(&apos;key&apos;, &apos;value&apos;);storage.getItem(&apos;key&apos;);storage.removeItem(&apos;key&apos;);storage.clear(">
+<meta name="keywords" content="HTML CSS JavaScript NodeJS ELectron React Webpack Babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端学习">
+<meta property="og:url" content="http://yuanmie.github.io/2017/12/04/front-end/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="学习前端的一些笔记. HTML5 存储  session storage 会话存储，在整个会话区间有效 local storage 存储在本地浏览器上，所有人都能访问  代码示例: 1234storage.setItem(&apos;key&apos;, &apos;value&apos;);storage.getItem(&apos;key&apos;);storage.removeItem(&apos;key&apos;);storage.clear(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuanmie.github.io/img/box-model.png">
+<meta property="og:image" content="http://yuanmie.github.io/img/pseudo-element.png">
+<meta property="og:updated_time" content="2018-04-07T09:51:58.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端学习">
+<meta name="twitter:description" content="学习前端的一些笔记. HTML5 存储  session storage 会话存储，在整个会话区间有效 local storage 存储在本地浏览器上，所有人都能访问  代码示例: 1234storage.setItem(&apos;key&apos;, &apos;value&apos;);storage.getItem(&apos;key&apos;);storage.removeItem(&apos;key&apos;);storage.clear(">
+<meta name="twitter:image" content="http://yuanmie.github.io/img/box-model.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2017/12/04/front-end/"/>
+
+
+
+
+
+  <title>前端学习 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2017/12/04/front-end/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T09:31:10+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习前端的一些笔记.</p>
+<h2 id="html5">HTML5</h2>
+<p><em>存储</em></p>
+<ul>
+<li><p>session storage</p>
+<p>会话存储，在整个会话区间有效</p></li>
+<li><p>local storage</p>
+<p>存储在本地浏览器上，所有人都能访问</p></li>
+</ul>
+<p>代码示例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">storage.setItem(<span class="string">'key'</span>, <span class="string">'value'</span>);</span><br><span class="line">storage.getItem(<span class="string">'key'</span>);</span><br><span class="line">storage.removeItem(<span class="string">'key'</span>);</span><br><span class="line">storage.clear();</span><br></pre></td></tr></table></figure>
+<p><em>WebSocket</em></p>
+<p>WebSocket为浏览器与服务器提供了全双工通信。服务器端有相应的实现，比如Tomcat实现了，并且在example提供了websocket的demo。浏览器端实现如下：</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">"ws://localhost:9998/echo"</span>);</span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) //<span class="title">onopen</span>事件</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  ws.send(<span class="string">"Message to send"</span>); <span class="comment">//发送消息方法</span></span><br><span class="line">&#125;;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>)  //收到消息事件</span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  <span class="keyword">var</span> received_msg = evt.data;</span><br><span class="line">  alert(<span class="string">"Message is received..."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//ws.close() 主动关闭socket方法。</span></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) //关闭事件</span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">  alert(<span class="string">"Connection is closed..."</span>); </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="css">CSS</h2>
+<p><em>box model</em></p>
+<p>主要是margin和padding的区别，一图流:</p>
+<figure>
+<img src="/img/box-model.png" alt="box"><figcaption>box</figcaption>
+</figure>
+<p><em>pseudo-class</em></p>
+<p>元素的一种特殊状态，比如<code>a:link,a:hover</code>.link,hover就是伪类</p>
+<p>参考:<a href="https://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank" rel="noopener">pseudo-class</a></p>
+<p><em>pseudo-element</em></p>
+<p>伪元素修饰一个元素的指定的部分。参考:<a href="https://www.w3schools.com/css/css_pseudo_elements.asp" target="_blank" rel="noopener">pseudo-element</a></p>
+<figure>
+<img src="/img/pseudo-element.png" alt="pseudo-element"><figcaption>pseudo-element</figcaption>
+</figure>
+<p><em>flexbox</em></p>
+<p>弹性布局，非常的好用。</p>
+<p>常用的有<code>flex-direction:布局的方向row/column</code> <code>jutify-content: 横向对齐flex容器内的flex项</code> <code>alignitems：垂直对齐flex容器内的flex项</code></p>
+<p>参考:<a href="https://www.w3schools.com/css/css3_flexbox.asp" target="_blank" rel="noopener">flexbox</a></p>
+<h2 id="javascript">JavaScript</h2>
+<p><em>this</em></p>
+<ol type="1">
+<li>如果是普通调用，那么this绑定window</li>
+<li>谁调用，this用谁的</li>
+<li>箭头函数，定义的时候绑定了定义时所在环境的this。</li>
+</ol>
+<p><em>异步</em></p>
+<p>普通回调</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">        url: ctx + <span class="string">'/app/tj/getDwTreeNodes'</span>,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        <span class="keyword">async</span>: <span class="literal">false</span>,</span><br><span class="line">        data:&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">  		error:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>promise</p>
+<p>定义一个promise对象，resolve为成功回调函数，reject是失败回调函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一般这样使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">then(functionA, functionB), functionA就是上面reolve函数，functionB就是上文的reject</span></span><br><span class="line"><span class="comment">可链式操作，前一个then执行后，后一个then才会执行。then返回一个新的promise对象。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> getJSON(post.commentURL);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> <span class="title">funcA</span>(<span class="params">comments</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"resolved: "</span>, comments);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> <span class="title">funcB</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"rejected: "</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>async和await</p>
+<p>用同步的方式写异步。本质上还是异步.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fname</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> baidu_response = <span class="keyword">await</span> fetch(<span class="string">'baidu.com'</span>) <span class="comment">//await 会阻塞</span></span><br><span class="line">    <span class="keyword">let</span> github_response = <span class="keyword">await</span> fetch(<span class="string">'github.com'</span>) <span class="comment">//只有上一个await执行玩，才会执行这个</span></span><br><span class="line">    <span class="built_in">console</span>.log(baidu_response.text())</span><br><span class="line">  	<span class="built_in">console</span>.log(github_response.text())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fname().then(toJson) <span class="comment">//toJson是个函数，举例用</span></span><br></pre></td></tr></table></figure>
+<h2 id="react-技术栈">React 技术栈</h2>
+<h3 id="react">React</h3>
+<ul>
+<li><p>JSX</p>
+<p>JSX是JavaScript的一种扩展。</p>
+<p>简单的看，可以在JavaScript中混入HTML</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;h1&gt;&#123;<span class="number">1</span> + <span class="number">2</span>&#125;&lt;<span class="regexp">/h1&gt; /</span>* JavaScript表达式要包裹在｛｝*<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<p>参考:<a href="https://reactjs.org/docs/introducing-jsx.html" class="uri" target="_blank" rel="noopener">https://reactjs.org/docs/introducing-jsx.html</a></p></li>
+<li><p>Component react以组件为基础</p></li>
+<li><p>render</p>
+<p>渲染组件</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;h1&gt;Hello, world&lt;<span class="regexp">/h1&gt;;</span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">  element,</span></span><br><span class="line"><span class="regexp">  document.getElementById('root')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure></li>
+<li><p>props 不可变。从外部传递，通过this.props.xxx获取</p></li>
+<li>state 组件内部状态，可变。通过this.state.xxx获取，this.setState({key:value})设置。
+<ul>
+<li><p>lifecycle</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组件有生命周期:</span></span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">  <span class="comment">//组件内容被渲染后</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentWillUnmount() &#123;</span><br><span class="line">  <span class="comment">//组件销毁后</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>event handle react包装了原先DOM的事件，符合W3C标准，不担心兼容问题。</p></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component onClick=&#123;onclick&#125; /&gt;</span><br><span class="line"></span><br><span class="line">function onClick(e)&#123;</span><br><span class="line">    //取值. e.target.value</span><br><span class="line">    e.preventDefault(); //去掉默认的行为</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>top-down data flow &amp; inverse data flow</p>
+<p>props会从高层级自动流传到低等级的组件。如果低等级的组件想要改变高等级的组件，需要在props传入高等级组件的方法。</p></li>
+<li><p>key &amp; list</p>
+<p>react中的list中每一项需要一个唯一的key值。</p></li>
+<li><p>refs &amp; findDOMNode</p>
+<p>在一些情况下（比如获取输入），需要得到真实的DOM node（react 使用的是virtual DOM）。</p>
+<p>so ,可以这样做：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//示意用</span></span><br><span class="line">&lt;input <span class="keyword">type</span>=<span class="string">"text"</span> ref=&#123;<span class="function">(<span class="params">input</span>) =&gt;</span> &#123; <span class="keyword">this</span>.textInput = input; &#125;&#125; /&gt; <span class="comment">//在箭头函数直接让</span></span><br><span class="line">													<span class="comment">//this.textInput绑定真实的DOM Node</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.textInput.focus(); <span class="comment">//获取到真实的node</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>conditional render</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//就是if/else</span></span><br><span class="line">rend()&#123;</span><br><span class="line">    <span class="keyword">if</span> (condition) &#123;</span><br><span class="line">      button = &lt;LogoutButton onClick=&#123;<span class="keyword">this</span>.handleLogoutClick&#125; /&gt;;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      button = &lt;LoginButton onClick=&#123;<span class="keyword">this</span>.handleLoginClick&#125; /&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span> (button);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Forms</p>
+<p>处理表单时，用state存储所有输入的值，自定义onSubmit事件。</p></li>
+<li><p>Composition first versus inheritance</p>
+<p>强烈推荐使用组合。唯一的继承是<code>extends component</code></p></li>
+</ul>
+<h3 id="react-router">React-Router</h3>
+<ul>
+<li><p>Switch</p>
+<p>Switch是专一的，只会选择一个router匹配。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Switch&gt;</span><br><span class="line">&lt;Route path=&apos;x&apos; component=&#123;component&#125;&gt;</span><br><span class="line">&lt;Route path=&apos;x/y&apos; component=&#123;component&#125;&gt;</span><br><span class="line">&lt;Route path=&apos;z&apos; component=&#123;component&#125;&gt;</span><br><span class="line">&lt;/Switch&gt;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Route Route定义一个路由，当路径匹配的时候，route就会开始渲染。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=&apos;&apos; component=&#123;component&#125;&gt;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>Router</p>
+<p>​包裹多个Route</p></li>
+<li><p>Link Link跳转到指定的Route中。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link to=&#123;url&#125;&gt;xxx&lt;/Link&gt;</span><br></pre></td></tr></table></figure></p></li>
+<li><p>HashRouter 服务静态内容。</p></li>
+</ul>
+<h3 id="redux">Redux</h3>
+<p>redux主要是为了解决组件间状态交互的问题</p>
+<ul>
+<li>store 一个仓库,存储state</li>
+<li>state 状态</li>
+<li>action 事件，格式为{type:“xxx”, others}</li>
+<li>dispatch 分发器。把action发送给store</li>
+<li>reducer 根据收到的action，旧的state，计算出新的state</li>
+<li>subscribe 订阅，state变化后，订阅的UI组件进行重新渲染。</li>
+<li>connect 用于从UI组件(纯UI，数据只从props获得)生成容器组件(管理状态)。
+<ul>
+<li>mapStateToProps() 将容器组件的state转化为UI组件的props</li>
+<li>mapDispatchToProps() 将UI组件的action传给store</li>
+</ul></li>
+<li>privoder 包裹组件，利用react的context机制，使得同一provider下的组件可以方便的访问同一state.</li>
+</ul>
+<h3 id="react-native">React-Native</h3>
+<p>用react js写移动端，react-native会把js代码转换成原生代码。</p>
+<p>可以把react写web的经验迁移过来，有几个不同点：</p>
+<ol type="1">
+<li><p>组件</p>
+<p>react native有自己的组件</p></li>
+<li><p>布局</p>
+<p>react native只能使用flex布局</p></li>
+<li><p>样式</p>
+<p>react native没有全部的css样式，且名称变化如margin-left（css）为marginLeft（react native）。</p>
+<p>样式可以在组件中直接写样式,或者用stylesheet.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;component style=&#123;&#123;<span class="attr">background</span>:black&#125;&#125; /&gt; <span class="comment">/* 直接写样式 */</span></span><br><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    borderRadius: <span class="number">4</span>,</span><br><span class="line">    borderWidth: <span class="number">0.5</span>,</span><br><span class="line">    borderColor: <span class="string">'#d6d7da'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  title: &#123;</span><br><span class="line">    fontSize: <span class="number">19</span>,</span><br><span class="line">    fontWeight: <span class="string">'bold'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">&lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">  &lt;Text style=&#123;styles.title&#125; /&gt;</span><br><span class="line">&lt;<span class="regexp">/View&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="nodejs">NodeJS</h2>
+<p>NodeJS是js的一个运行时环境，可以让JS跳出浏览器的限制，做更多好玩的事。</p>
+<p><strong>模块化</strong></p>
+<p>NodeJs有自己内置的模块，开发者也可以自定义模块（一般就是一个JS文件，或者是一个文件夹，里面有一个index.js.通过export关键字导出函数，类或变量）</p>
+<p><em>导入模块</em></p>
+<p><code>var a = require('./fss.js')</code></p>
+<p><em>导出模块</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.hello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello World!'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>文件操作</strong></p>
+<p>fs是NodeJS的文件处理模块。</p>
+<p><em>Buffer</em></p>
+<p>Buffer提供对二进制数据的操作</p>
+<p><em>Stream</em></p>
+<p>流可以一边读取一边处理，基于事件驱动。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rs = fs.createReadStream(src);</span><br><span class="line"><span class="keyword">var</span> ws = fs.createWriteStream(dst);</span><br><span class="line"></span><br><span class="line">rs.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ws.write(chunk) === <span class="literal">false</span>) &#123;</span><br><span class="line">        rs.pause();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rs.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ws.end();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ws.on(<span class="string">'drain'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    rs.resume();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><em>Path</em></p>
+<p>这个模块提供了文件路径操作。</p>
+<p><strong>网络</strong></p>
+<p>NodeJS提供了多个网络模块<code>Http``Https</code>等等来对网络进行出来，详细看API。</p>
+<p><strong>进程管理</strong></p>
+<p><em>process</em></p>
+<p>这是一个全局对象，任何地方都可以使用</p>
+<p><em>child_process</em></p>
+<p>这是一个模块，可以创建和控制子进程，核心函数是<code>spawn</code>函数。此函数创建一个子进程来执行命令。</p>
+<p>进程间通过信号来通信。</p>
+<p><strong>异步编程</strong></p>
+<p>核心：事件机制和异步编程。最直观的体现就是回调。</p>
+<p>参考<a href="https://nqdeng.github.io/7-days-nodejs/#3.1" target="_blank" rel="noopener">7天学会NodeJS</a></p>
+<h2 id="electron">Electron</h2>
+<p><em>Electron</em>是github研发的一个跨平台的UI库。其实就是套了一层壳（V8 引擎，NodeJS’和系统级别的原生功能），然后把网页加载到这层壳中，实际上Electron大部分工作就是写网页。</p>
+<p>官方的Demo非常好，强烈推荐<a href="https://github.com/electron/electron-api-demos" target="_blank" rel="noopener">Electron Demo</a></p>
+<p><em>窗口对象</em></p>
+<p>引用demo上的一个例子,删掉了一些无关的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> BrowserWindow = <span class="built_in">require</span>(<span class="string">'electron'</span>).remote.BrowserWindow <span class="comment">//窗口对象</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>) <span class="comment">//NodeJs 的path模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> modalPath = path.join(<span class="string">'file://'</span>, __dirname, <span class="string">'../../sections/windows/modal.html'</span>) <span class="comment">//网页路径</span></span><br><span class="line"><span class="keyword">let</span> win = <span class="keyword">new</span> BrowserWindow(&#123; <span class="attr">width</span>: <span class="number">400</span>, <span class="attr">height</span>: <span class="number">320</span> &#125;) <span class="comment">//创建窗口</span></span><br><span class="line">win.on(<span class="string">'close'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; win = <span class="literal">null</span> &#125;) <span class="comment">//关闭窗口，electron也是基于事件机制</span></span><br><span class="line">win.loadURL(modalPath) <span class="comment">//加载网页</span></span><br><span class="line">win.show() <span class="comment">//显示窗口。</span></span><br></pre></td></tr></table></figure>
+<p><em>菜单</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> electron = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line"><span class="keyword">const</span> BrowserWindow = electron.BrowserWindow</span><br><span class="line"><span class="keyword">const</span> Menu = electron.Menu <span class="comment">//Menu 对象</span></span><br><span class="line"><span class="keyword">const</span> app = electron.app</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">定义菜单模版</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> template = [&#123;</span><br><span class="line">  label: <span class="string">'Edit'</span>,</span><br><span class="line">  submenu: [&#123;</span><br><span class="line">    label: <span class="string">'Undo'</span>,</span><br><span class="line">    accelerator: <span class="string">'CmdOrCtrl+Z'</span>,</span><br><span class="line">    role: <span class="string">'undo'</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  label: <span class="string">'View'</span>,</span><br><span class="line">  submenu: [&#123;</span><br><span class="line">    label: <span class="string">'Reload'</span>,</span><br><span class="line">    accelerator: <span class="string">'CmdOrCtrl+R'</span>,</span><br><span class="line">    click: <span class="function"><span class="keyword">function</span> (<span class="params">item, focusedWindow</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (focusedWindow) &#123;</span><br><span class="line">        <span class="comment">// on reload, start fresh and close any old</span></span><br><span class="line">        <span class="comment">// open secondary windows</span></span><br><span class="line">        <span class="keyword">if</span> (focusedWindow.id === <span class="number">1</span>) &#123;</span><br><span class="line">          BrowserWindow.getAllWindows().forEach(<span class="function"><span class="keyword">function</span> (<span class="params">win</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (win.id &gt; <span class="number">1</span>) &#123;</span><br><span class="line">              win.close()</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        focusedWindow.reload()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'ready'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> menu = Menu.buildFromTemplate(template) <span class="comment">//构建菜单并设置</span></span><br><span class="line">  Menu.setApplicationMenu(menu)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><em>Native user interface(原生用户接口)</em></p>
+<p>打开外部链接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> shell = <span class="built_in">require</span>(<span class="string">'electron'</span>).shell</span><br><span class="line">shell.openExternal(<span class="string">'http://electron.atom.io'</span>)</span><br></pre></td></tr></table></figure>
+<p>对话框</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ipc = <span class="built_in">require</span>(<span class="string">'electron'</span>).ipcMain</span><br><span class="line"><span class="keyword">const</span> dialog = <span class="built_in">require</span>(<span class="string">'electron'</span>).dialog <span class="comment">//主要是这个</span></span><br><span class="line"></span><br><span class="line">ipc.on(<span class="string">'open-file-dialog'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  dialog.showOpenDialog(&#123;</span><br><span class="line">    properties: [<span class="string">'openFile'</span>, <span class="string">'openDirectory'</span>]</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">files</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (files) event.sender.send(<span class="string">'selected-directory'</span>, files)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>系统托盘</p>
+<p>详细看API</p>
+<p><em>IPC</em></p>
+<p><em>Internet Process Communication</em>是过程间通信，主要用于在main进程和render进程传递消息（异步和同步）。</p>
+<p>看一个小例子;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main process</span></span><br><span class="line"><span class="keyword">const</span> ipc = <span class="built_in">require</span>(<span class="string">'electron'</span>).ipcRenderer</span><br><span class="line">ipc.send(<span class="string">'asynchronous-message'</span>, <span class="string">'ping'</span>)</span><br><span class="line"></span><br><span class="line">ipc.on(<span class="string">'asynchronous-reply'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, arg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> message = <span class="string">`Asynchronous message reply: <span class="subst">$&#123;arg&#125;</span>`</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'async-reply'</span>).innerHTML = message</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//render process</span></span><br><span class="line"><span class="keyword">const</span> ipc = <span class="built_in">require</span>(<span class="string">'electron'</span>).ipcMain</span><br><span class="line"></span><br><span class="line">ipc.on(<span class="string">'asynchronous-message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, arg</span>) </span>&#123;</span><br><span class="line">  event.sender.send(<span class="string">'asynchronous-reply'</span>, <span class="string">'pong'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><em>获取系统信息，与剪切板互动，从指定协议启动Electron app，打印成pdf，快照</em></p>
+<p>详细见Demo。</p>
+<h2 id="工具篇">工具篇</h2>
+<p><em>npm 速度入门</em></p>
+<ul>
+<li><p>本地安装 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install xxx</span><br><span class="line">--save </span><br><span class="line">#会在package.json的添加插件依赖</span><br><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;xxx&quot;: &quot;^version&quot;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">--save-dev #和--save差不多。</span><br></pre></td></tr></table></figure></p></li>
+<li><p>全局安装 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -global xxx</span><br></pre></td></tr></table></figure></p></li>
+<li><p>npm install 安装package.json指定的所有依赖</p></li>
+</ul>
+<p><em>babel</em></p>
+<p><em>babel</em>是一个转码器，用于将ES6代码转为ES5代码。babel的配置文件为.babelrc。关键的配置就是presets和plugin了。preset是要npm install的。</p>
+<p>like this:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [</span><br><span class="line">    <span class="string">"es2015"</span>,</span><br><span class="line">    <span class="string">"react"</span>,</span><br><span class="line">    <span class="string">"stage-2"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"plugins"</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>webpack</em></p>
+<p><em>webpack</em>是一个前端构建工具。怎么构建呢？从一个入口文件开始，递归构建所有涉及的文件，最终输出一个文件。</p>
+<p>在配置文件webpack.config.js中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./main.js'</span>, <span class="comment">//入口文件，允许多个入口文件</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span> <span class="comment">//输出文件</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>webpack中的一个关键概念是：loader–文件的预处理器。比如使用的ES6编写的文件，必须先经过babel-loader处理才能进行下一步的构建。webpack有babel loader, css loader, image loader.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./main.jsx'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    loaders:[</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js[x]?$/</span>, <span class="comment">//loader处理的文件集合</span></span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>, <span class="comment">//排除的</span></span><br><span class="line">        loader: <span class="string">'babel-loader?presets[]=es2015&amp;presets[]=react'</span> <span class="comment">//loader</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>webpack另一个关键概念是plugins.是的，webpack可以装很多插件。比如后面说的HMR插件.举个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> HtmlwebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">var</span> OpenBrowserPlugin = <span class="built_in">require</span>(<span class="string">'open-browser-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./main.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlwebpackPlugin(&#123;</span><br><span class="line">      title: <span class="string">'Webpack-demos'</span>,</span><br><span class="line">      filename: <span class="string">'index.html'</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> OpenBrowserPlugin(&#123;</span><br><span class="line">      url: <span class="string">'http://localhost:8080'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>另一个比较实用的是webpack-dev-server.启动这个服务器后，可以进行<code>Hot Module Replacement(HMR)</code>，就是热替换了，修改代码无须手动刷新页面，而是自动 reload。</p>
+<p>参考<a href="https://github.com/ruanyf/webpack-demos" target="_blank" rel="noopener">阮一峰的webpack教程</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML-CSS-JavaScript-NodeJS-ELectron-React-Webpack-Babel/" rel="tag"># HTML CSS JavaScript NodeJS ELectron React Webpack Babel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/how-to-read-book-note/" rel="next" title="<如何阅读一本书> 读书笔记">
+                <i class="fa fa-chevron-left"></i> <如何阅读一本书> 读书笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/20/statistics-basic/" rel="prev" title="统计学之基本知识">
+                统计学之基本知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#html5"><span class="nav-number">1.</span> <span class="nav-text">HTML5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css"><span class="nav-number">2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javascript"><span class="nav-number">3.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-技术栈"><span class="nav-number">4.</span> <span class="nav-text">React 技术栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#react"><span class="nav-number">4.1.</span> <span class="nav-text">React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router"><span class="nav-number">4.2.</span> <span class="nav-text">React-Router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redux"><span class="nav-number">4.3.</span> <span class="nav-text">Redux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-native"><span class="nav-number">4.4.</span> <span class="nav-text">React-Native</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs"><span class="nav-number">5.</span> <span class="nav-text">NodeJS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#electron"><span class="nav-number">6.</span> <span class="nav-text">Electron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具篇"><span class="nav-number">7.</span> <span class="nav-text">工具篇</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

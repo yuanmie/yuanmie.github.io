@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="notes," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 这是非常好的科普书,极大的颠覆我的认知. 从人类诞生起,就对世界充满了好奇.我们总是抬起头,仰望星空.思考着:天地是什么形状,人类是来自哪里,时空是什么东西.之前看过一句古文:  ​ 四方上下曰宇, 往来古今曰宙  在古时,人们已经通过想象去猜测世界,类似的还有天圆地方,五行论.随着科技的发展,我们首次认识到地球是圆的,提出了地心说,后来哥白尼提出了日心说,再后来我们知道太阳系也">
+<meta name="keywords" content="notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七堂极简物理课">
+<meta property="og:url" content="http://yuanmie.github.io/2017/12/27/seven-physical-classes/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="前言 这是非常好的科普书,极大的颠覆我的认知. 从人类诞生起,就对世界充满了好奇.我们总是抬起头,仰望星空.思考着:天地是什么形状,人类是来自哪里,时空是什么东西.之前看过一句古文:  ​ 四方上下曰宇, 往来古今曰宙  在古时,人们已经通过想象去猜测世界,类似的还有天圆地方,五行论.随着科技的发展,我们首次认识到地球是圆的,提出了地心说,后来哥白尼提出了日心说,再后来我们知道太阳系也">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-31T08:37:38.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="七堂极简物理课">
+<meta name="twitter:description" content="前言 这是非常好的科普书,极大的颠覆我的认知. 从人类诞生起,就对世界充满了好奇.我们总是抬起头,仰望星空.思考着:天地是什么形状,人类是来自哪里,时空是什么东西.之前看过一句古文:  ​ 四方上下曰宇, 往来古今曰宙  在古时,人们已经通过想象去猜测世界,类似的还有天圆地方,五行论.随着科技的发展,我们首次认识到地球是圆的,提出了地心说,后来哥白尼提出了日心说,再后来我们知道太阳系也">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2017/12/27/seven-physical-classes/"/>
+
+
+
+
+
+  <title>七堂极简物理课 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2017/12/27/seven-physical-classes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">七堂极简物理课</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T19:04:00+08:00">
+                2017-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index">
+                    <span itemprop="name">notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言">前言</h3>
+<p>这是非常好的科普书,极大的颠覆我的认知.</p>
+<p>从人类诞生起,就对世界充满了好奇.我们总是抬起头,仰望星空.思考着:天地是什么形状,人类是来自哪里,时空是什么东西.之前看过一句古文:</p>
+<blockquote>
+<p>​ 四方上下曰宇, 往来古今曰宙</p>
+</blockquote>
+<p>在古时,人们已经通过想象去猜测世界,类似的还有天圆地方,五行论.随着科技的发展,我们首次认识到地球是圆的,提出了地心说,后来哥白尼提出了日心说,再后来我们知道太阳系也是宇宙的一隅中的一个小角落.牛顿提出了万有引力定理,我们知道了为什么我们不会飞起来(好想飞),开创了现代物理.马克斯·普朗克提出了量子论,正式进入量子物理时代.</p>
+<p>人类在探索世界的路途上一步一步前进.我们还没有彻底的揭开那层神秘的面纱,但是这路途上的风景是如此波澜壮阔,绚丽缤纷.</p>
+<p>在广义相对论中,我们知道空间即引力场,也是一种物质.在量子物理中,我们知道了原子的存在,能量并不连续,世界基于事件.亦会诧异整个宇宙只有少数几种粒子构成–电子,夸克,光子,胶子,中微子以及暗物质.空间并不无限可分,空间也是由空间粒子构成.热量可能会成为时间的关键,概率被引进了物理世界.认识到在这个浩瀚的宇宙中,人类只是自然亿万万可能中的一种.我们本身就是自然一部分,并不是旁边者.我就是我.</p>
+<a id="more"></a>
+<h3 id="第一课-最美的理论">第一课 最美的理论</h3>
+<blockquote>
+<p>广义相对论 – 伟大的物理学家列夫·郎道称之为“最美的理论”</p>
+</blockquote>
+<p>前提知识:万有引力 场</p>
+<p>引力是怎么产生的?爱因斯坦想到,类似电磁场,引力也是由引力场产生的,爱因斯坦想弄明白这个引力场的运作方式,以及怎么用方程对其进行描述.突然,一个百分百天才的想法浮现:引力场并不弥漫于空间,它本身就是空间.</p>
+<p>空间不再有别于物质, 而是构成世界的物质之一,一种可以波动,弯曲,变形的实体.太阳会使其周围的空间弯曲,所以地球是在一个坡道上运动,这就是引力产生的原因.</p>
+<h3 id="第二课-量子">第二课 量子</h3>
+<p>量子是能量发射和吸收的最小单元.这说明能力并不是连续的,而是以量子为单元增加与减少的.而后尼尔斯·波尔提出<strong>量子跃迁</strong>理论.</p>
+<blockquote>
+<p>电子在特定的能量下才能从一个原子轨道“跳跃”到另一个原子轨道上,并同时释放或吸收一个光子.</p>
+</blockquote>
+<p>之后维尔纳·海森堡提出了更多天马行空的理论:</p>
+<blockquote>
+<p>电子并非一直存在,只有和其他东西相互作用时它们才会存在.当它们与其他东西相撞时,就会以一个可计算的概率在某个地方出现.量子跃迁是它们现身的唯一方式:一个电子就是相互作用下的一连串跳跃.</p>
+</blockquote>
+<h3 id="第三课-宇宙的构造">第三课 宇宙的构造</h3>
+<p>古代的人们以为天在上,地在下.以盘古开天辟地的传说而言,清者上浮为天,浊者下沉为地.后来演变为“天圆地方”,后来人们认识到地球也是圆的,对于一个悬在空中的土地,圆形是最合理的.之后有了日心说,随着各种先进仪器的出现,我们认识了银河系,太阳只是这浩瀚银河系星云中的沧海一粟.而在天文学家对星云进行精确的测量后发现,银河系也是众多星系间浩瀚星云的一粒尘埃.</p>
+<p>而宇宙的空间也不是一马平川的,而是弯曲的,因为有众多的星系扭曲空间.根据大爆炸理论,目前的宇宙是由大约150亿年前一个极热极密的小星云(奇点)演化而来,而这个奇点有可能是由上一个宇宙塌陷而来.</p>
+<h3 id="第四课-粒子">第四课 粒子</h3>
+<p>目前我们已知的粒子:夸克,电子,光子,胶子(这四种粒子构成我们旁边的一切),中微子(不和我们相互作用),暗物质.</p>
+<p>屈指可数的几种基本粒子,在看似一无所有的空间中,构成了这缤纷异常的万物.</p>
+<h3 id="第五课-空间的颗粒">第五课 空间的颗粒</h3>
+<p>广义相对论告诉我们世界是连续不断弯曲的空间, 而量子理论告诉我们世界是一个能量量子跃动的平直空间.为了解决这2种理论的矛盾,一个重要的尝试就是圈量子引力理论.</p>
+<p>圈量子引力理论核心结论是:空间是不连续的,而是由“空间原子”构成的,这种颗粒比最小的原子核还有小几亿亿倍.这些空间原子被称为环,他们环环相扣,形成了一个相互关联的巨大网络.</p>
+<p>圈量子引力理论第二个结论是:“时间不受事物影响, 一直流逝”这个想法也不存在了.在空间颗粒的微小尺度下,每个物理过程都有自己的节奏,时间从构成世界的量子事件之间的相互关系中产生,这些量子事件就是时间的源头.</p>
+<h3 id="第六课-概率-时间和黑洞的热">第六课 概率 时间和黑洞的热</h3>
+<p>物理学还有一个关键的问题:热.物体发热的原因是由于其中的原子运动速度更快.热量总是从热的地方转移到冷的地方,为什么会这样?</p>
+<p>波尔兹曼提出了解释:这样的过程完全是随机的,但是从统计上来看,一个快速运动的热物体的原子更有可能撞上一个冷物体的原子,传递一部分能量.大量偶然碰撞下,能量趋向于平均分布.因此,结论是热量从热的物体到冷的物体概率更大,导致了这种现象.概率被引入了物理学的核心.</p>
+<p>当热量在引力场中扩散,空间和时间也应该发生振动,但现在还没有方程来描述这个.作者认为热是时间的关键,热量发生转移了,才有了过去与未来的区别.</p>
+<p>而有可能解释这些现象的便是黑洞的热,史蒂芬·霍金成功地证明了黑洞总是热的,这种热及其微弱,目前还没有探测到,但霍金的计算令人信服,黑洞的热也被普遍认为是真是存在的.</p>
+<p>黑洞的热是发生在黑洞这种物体上的量子效应,黑洞本质上是引力性的.一个个空间量子,振动加热了黑洞表面,使黑洞变热.</p>
+<p>希望借由黑洞的热能让物理学家发现时间的本质.由于人类的感知有限,时间看起来是最神秘,最难以理解的一种东西.如果人类有一天了解了时间的本质,人类社会会发生怎样的变化,留一份美好的想象.</p>
+<h3 id="第七课-我们">第七课 我们</h3>
+<p>我们是自然的一部分.我们的大脑拥有亿万个神经元,我们的思想是由这些神经元相互作用产生的.我们的道德价值,情感和爱都是真实的.</p>
+<p>我相信,这个宇宙可能拥有着一些难以理解的生命形式,这么庞大的世界有着无穷多的可能性.但作为一个人类个人,我觉得人类是自然界一种美丽的花朵,是非常独特的一种生命.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/notes/" rel="tag"># notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/statistics-basic/" rel="next" title="统计学之基本知识">
+                <i class="fa fa-chevron-left"></i> 统计学之基本知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/28/minimalism/" rel="prev" title="极简主义">
+                极简主义 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一课-最美的理论"><span class="nav-number">2.</span> <span class="nav-text">第一课 最美的理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二课-量子"><span class="nav-number">3.</span> <span class="nav-text">第二课 量子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三课-宇宙的构造"><span class="nav-number">4.</span> <span class="nav-text">第三课 宇宙的构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四课-粒子"><span class="nav-number">5.</span> <span class="nav-text">第四课 粒子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五课-空间的颗粒"><span class="nav-number">6.</span> <span class="nav-text">第五课 空间的颗粒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六课-概率-时间和黑洞的热"><span class="nav-number">7.</span> <span class="nav-text">第六课 概率 时间和黑洞的热</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七课-我们"><span class="nav-number">8.</span> <span class="nav-text">第七课 我们</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

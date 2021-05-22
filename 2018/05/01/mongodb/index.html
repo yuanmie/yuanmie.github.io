@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。 准备  1234&amp;gt; windows10&amp;gt; mongodb:3.6.3&amp;gt; 配置mongodb的环境变量&amp;gt;  启动 默认方式 1mongod --dbpath c:\data\db /*以默认的方式启动mongodb服务器*/ 1mongo /*开启mongodb的客户端shell">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongodb小记">
+<meta property="og:url" content="http://yuanmie.github.io/2018/05/01/mongodb/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。 准备  1234&amp;gt; windows10&amp;gt; mongodb:3.6.3&amp;gt; 配置mongodb的环境变量&amp;gt;  启动 默认方式 1mongod --dbpath c:\data\db /*以默认的方式启动mongodb服务器*/ 1mongo /*开启mongodb的客户端shell">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuanmie.github.io/img/rs_status.png">
+<meta property="og:image" content="http://yuanmie.github.io/img/shard_stats1.png">
+<meta property="og:image" content="http://yuanmie.github.io/img/shard_stats2.png">
+<meta property="og:updated_time" content="2018-05-20T09:14:03.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mongodb小记">
+<meta name="twitter:description" content="MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。 准备  1234&amp;gt; windows10&amp;gt; mongodb:3.6.3&amp;gt; 配置mongodb的环境变量&amp;gt;  启动 默认方式 1mongod --dbpath c:\data\db /*以默认的方式启动mongodb服务器*/ 1mongo /*开启mongodb的客户端shell">
+<meta name="twitter:image" content="http://yuanmie.github.io/img/rs_status.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2018/05/01/mongodb/"/>
+
+
+
+
+
+  <title>Mongodb小记 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2018/05/01/mongodb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mongodb小记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T21:31:10+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。</p>
+<h3 id="准备">准备</h3>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; windows10</span><br><span class="line">&gt; mongodb:<span class="number">3.6</span>.3</span><br><span class="line">&gt; 配置mongodb的环境变量</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="启动">启动</h3>
+<p><strong>默认方式</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath c:\data\db <span class="comment">/*以默认的方式启动mongodb服务器*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo <span class="comment">/*开启mongodb的客户端shell，连接服务器*/</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>认证方式**</p>
+<p>先以默认方式启动mongodb,然后创建Admin用户和普通的用户。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* mongodb shell */</span></span><br><span class="line"><span class="comment">/* 创建管理员，若不创建管理员账号，则普通账号拥有管理员的权限*/</span></span><br><span class="line">use admin</span><br><span class="line"></span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: <span class="string">"adminUser"</span>,</span><br><span class="line">    pwd: <span class="string">"adminPass"</span>,</span><br><span class="line">    roles: [ &#123; <span class="attr">role</span>: <span class="string">"userAdminAnyDatabase"</span>, <span class="attr">db</span>: <span class="string">"admin"</span> &#125; ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*创建普通用户,示例DB:demo */</span></span><br><span class="line">use demo</span><br><span class="line"></span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: <span class="string">"spring"</span>,</span><br><span class="line">    pwd: <span class="string">"spring"</span>,</span><br><span class="line">    roles: [ &#123; <span class="attr">role</span>: <span class="string">"readWrite"</span>, <span class="attr">db</span>: <span class="string">"demo"</span> &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>配置完毕后，关闭mongodb。</p>
+<p>以认证的方式启动mongoDB</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath c:\data\db --auth <span class="comment">/*开启认证*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*方式一*/</span></span><br><span class="line">mongo --port <span class="number">27017</span> -u <span class="string">"adminUser"</span> -p <span class="string">"adminPass"</span> --authenticationDatabase <span class="string">"admin"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*方式二*/</span></span><br><span class="line">mongo </span><br><span class="line">use admin</span><br><span class="line">db.auth(<span class="string">"adminUser"</span>, <span class="string">"adminPass"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="概念">概念</h3>
+<table>
+<thead>
+<tr class="header">
+<th>SQL术语</th>
+<th>NoSQL术语</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>database</td>
+<td>database</td>
+<td>数据库</td>
+</tr>
+<tr class="even">
+<td>table</td>
+<td>collection</td>
+<td>表/集合</td>
+</tr>
+<tr class="odd">
+<td>row</td>
+<td>document</td>
+<td>行/文档</td>
+</tr>
+<tr class="even">
+<td>column</td>
+<td>field</td>
+<td>列/字段</td>
+</tr>
+<tr class="odd">
+<td>index</td>
+<td>index</td>
+<td>索引</td>
+</tr>
+<tr class="even">
+<td>table join</td>
+<td>无</td>
+<td>表连接</td>
+</tr>
+<tr class="odd">
+<td>primary key</td>
+<td>primary key</td>
+<td>主键/MongoDB自动将_id设为主键</td>
+</tr>
+</tbody>
+</table>
+<h3 id="操作">操作</h3>
+<p>具体操作请看参考连接，在此仅记录一些不易理解的事物。</p>
+<ul>
+<li><p>建立索引</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection_name.ensureIndex(&#123;<span class="attr">key</span>:<span class="number">1</span>&#125;) <span class="comment">/* 1代表升序创建索引，-1代表降序创建索引 */</span></span><br></pre></td></tr></table></figure>
+<p>​</p></li>
+<li><p>聚合</p>
+<p>语法有点诡异</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*类似：select sum(likes) from mycol group by by_user*/</span></span><br><span class="line">db.mycol.aggregate([&#123;<span class="attr">$group</span> : &#123;<span class="attr">_id</span> : <span class="string">"$by_user"</span>, <span class="attr">num_tutorial</span> : &#123;<span class="attr">$sum</span> : <span class="string">"$likes"</span>&#125;&#125;&#125;])</span><br></pre></td></tr></table></figure>
+<p>MongoDB也有管道，和Unix的管道一样，将结果传递到另一端进行处理。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*把match出来的结果，再进行group操作*)</span></span><br><span class="line"><span class="comment">db.articles.aggregate( [</span></span><br><span class="line"><span class="comment">                        &#123; $match : &#123; score : &#123; $gt : 70, $lte : 90 &#125; &#125; &#125;,</span></span><br><span class="line"><span class="comment">                        &#123; $group: &#123; _id: null, count: &#123; $sum: 1 &#125; &#125; &#125;</span></span><br><span class="line"><span class="comment">                       ] );</span></span><br></pre></td></tr></table></figure></li>
+<li><p>副本（分布式）</p>
+<p>我们有2台机器A:192.168.66.106，B:192.168.18.51</p>
+<p>先在这些机器中运行mongodb</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath c:\data\db --replSet repset --bind_ip <span class="number">192.168</span><span class="number">.66</span><span class="number">.106</span> <span class="comment">/*绑定ip，否则不能远程连接,或许还需要在防火墙中开放端口*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath D:\mongoDB\data  --replSet repset --port <span class="number">20777</span> --bind_ip <span class="number">192.168</span><span class="number">.18</span><span class="number">.51</span></span><br></pre></td></tr></table></figure>
+<p>启动一台机器A</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo <span class="number">192.168</span><span class="number">.66</span><span class="number">.106</span></span><br><span class="line">use admin</span><br><span class="line">config = &#123;<span class="attr">_id</span>:<span class="string">"repset"</span>, <span class="attr">members</span>:[&#123;<span class="attr">_id</span>:<span class="number">0</span>, <span class="attr">host</span>:<span class="string">"192.168.66.106:27017"</span>&#125;, &#123;<span class="attr">_id</span>:<span class="number">0</span>, <span class="attr">host</span>:<span class="string">"192.168.18.51:20777"</span>&#125;]&#125;</span><br><span class="line">rs.initiate(config)</span><br><span class="line"><span class="comment">/*查看状态*/</span></span><br><span class="line">rs.status()</span><br></pre></td></tr></table></figure>
+<p>输出结果如图</p>
+<figure>
+<img src="/img/rs_status.png" alt="rs_status"><figcaption>rs_status</figcaption>
+</figure>
+<p>集群搭建好了，让我们来测试测试。依然在A中执行这些操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use test</span><br><span class="line">db.testdb.insert(&quot;hello&quot;, &quot;world&quot;)</span><br></pre></td></tr></table></figure>
+<p>现在在B中连接mongoDB</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo <span class="number">192.168</span><span class="number">.18</span><span class="number">.51</span>:<span class="number">20777</span></span><br><span class="line"><span class="comment">/*mongodb默认是从主节点读写数据的，副本节点上不允许读，需要设置副本节点可以读。*/</span></span><br><span class="line">db.getMongo().setSlaveOk()</span><br><span class="line"><span class="comment">/*现在看看数据是否同步*/</span></span><br><span class="line">use test</span><br><span class="line">db.testdb.find()</span><br></pre></td></tr></table></figure>
+<p>非常好，现在我们又有一台机器来做实验，启动它，然后加入进来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rs.add(&quot;192.168.18.52:20777&quot;)</span><br><span class="line">rs.status()</span><br></pre></td></tr></table></figure>
+<p><strong>Java编程</strong></p>
+<p>原生驱动的方式:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MongoClient mongoClient = <span class="keyword">new</span> MongoClient(</span><br><span class="line">Arrays.asList(<span class="keyword">new</span> ServerAddress(<span class="string">"192.168.18.51"</span>, <span class="number">20777</span>),</span><br><span class="line">			  <span class="keyword">new</span> ServerAddress(<span class="string">"192.168.66.106"</span>, <span class="number">27017</span>),</span><br><span class="line">			  <span class="keyword">new</span> ServerAddress(<span class="string">"192.168.18.52"</span>, <span class="number">20777</span>)));</span><br></pre></td></tr></table></figure>
+<p>Java会自动检测到主节点。当前的主节点故障后，其他的节点会自动选举，成为主节点。之后的操作与单个节点一致。</p>
+<p>TODO：spring-data-mongo集群编程</p>
+<p>​</p>
+<p>问题：</p>
+<p>为什么不能远程连接上：</p>
+<p>答: 要bind_ip, 防火墙要开放端口，replSet名字要一致</p>
+<p>副本集最好只剩一个节点，如何：</p>
+<p>答：所有的Secondary都宕机、或则副本集中只剩下一个节点，则该节点只能为Secondary节点，也就意味着整个集群只能进行读操作而不能进行写操作。官方推荐的最小的副本集也应该具备一个primary节点和两个secondary节点。两个节点的副本集不具备真正的故障转移能力。</p></li>
+<li><p>分片</p>
+<blockquote>
+<p>一桶水分几个瓶子装</p>
+</blockquote>
+<p>当我们的数据量太大，工作量过多，超出了磁盘容量，超出了CPU的处理能力，或超出了节点IO能力。这种时候，我们有2种选择：一是买一个更大更强的机器，这个称为<strong>垂直扩展</strong>;而是买更多的机器，搭成一个集群，分摊工作量，这个称为<strong>横向扩展</strong>。</p>
+<p>搭建这些集群挺繁琐的。让我们一步一步来,首先强烈推荐官网的教程<a href="https://docs.mongodb.com/manual/tutorial/deploy-shard-cluster/" class="uri" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/deploy-shard-cluster/</a></p>
+<p>注意，我是在同一台机器上测试，因此bind_ip都是127.0.0.1，若是在不同的机器上，请手动配置bind_ip为机器的公网ip。</p>
+<p><strong>第一步,配置config server replication set</strong></p>
+<p>3.6版本强制需要将config server配置成Replication set.这里我采取配置文件的方式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># config server 1</span><br><span class="line">sharding:</span><br><span class="line">  clusterRole: configsvr</span><br><span class="line">replication:</span><br><span class="line">  replSetName: configRepl</span><br><span class="line">net:</span><br><span class="line">  bindIp: 127.0.0.1</span><br><span class="line">  port: 30000</span><br><span class="line">storage:</span><br><span class="line">  dbPath: c:\data\configserver\db</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># config server 2</span><br><span class="line">sharding:</span><br><span class="line">  clusterRole: configsvr</span><br><span class="line">replication:</span><br><span class="line">  replSetName: configRepl</span><br><span class="line">net:</span><br><span class="line">  bindIp: 127.0.0.1</span><br><span class="line">  port: 30001</span><br><span class="line">storage:</span><br><span class="line">  dbPath: c:\data\configserver2\db</span><br></pre></td></tr></table></figure>
+<p>因为是测试，所以我只部署了2个config server，实际上至少需要3个。启动它们</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongod --config c:\data\configserver1\config.log <span class="comment">/*启动1*/</span></span><br><span class="line">mongod --config c:\data\configserver2\config.log <span class="comment">/*启动2*/</span></span><br></pre></td></tr></table></figure>
+<p>将他们配置成集群,用<code>mongo</code>命令连接，在shell中输入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rs.initiate(</span><br><span class="line">  &#123;</span><br><span class="line">    _id: <span class="string">"configRepl"</span>,</span><br><span class="line">    configsvr: <span class="literal">true</span>,</span><br><span class="line">    members: [</span><br><span class="line">      &#123; <span class="attr">_id</span> : <span class="number">0</span>, <span class="attr">host</span> : <span class="string">"127.0.0.1:30000"</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">_id</span> : <span class="number">1</span>, <span class="attr">host</span> : <span class="string">"127.0.0.1:30001"</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>第二步,配置shard set</strong></p>
+<p>这里我配置了2个shard，其中1个shard配了1个replication。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath c:\data\shard1 --shardsvr --replSet shardRepl --port <span class="number">27018</span></span><br><span class="line">mongod --dbpath c:\data\shard2 --shardsvr --replSet shardRepl --port <span class="number">27019</span></span><br></pre></td></tr></table></figure>
+<p>将这2个配成replication set</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rs.initiate(</span><br><span class="line">  &#123;</span><br><span class="line">    _id: <span class="string">"shardRepl"</span>,</span><br><span class="line">    members: [</span><br><span class="line">      &#123; <span class="attr">_id</span> : <span class="number">0</span>, <span class="attr">host</span> : <span class="string">"127.0.0.1:27018"</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">_id</span> : <span class="number">1</span>, <span class="attr">host</span> : <span class="string">"127.0.0.1:27019"</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>启动另外只有1个节点的shard</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath c:\data\shard2 --shardsvr --replSet shardRepl --port 27017</span><br></pre></td></tr></table></figure>
+<p><strong>第三步,配置shard router</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos --port <span class="number">40000</span> --configdb configRepl/<span class="number">127.0</span><span class="number">.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">30000</span>,<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">30001</span> <span class="comment">/*添加config erver集群，也可以通过配置文件来配置*/</span></span><br></pre></td></tr></table></figure>
+<p>用<code>mongo</code>连接，进入shell中，将shards添加进去</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh.addShard( <span class="string">"shardRepl/127.0.0.1:27018,127.0.0.1:27018"</span>)</span><br><span class="line">sh.addShard( <span class="string">"127.0.0.1:27017"</span>)</span><br></pre></td></tr></table></figure>
+<p>然后选择要进行切片的数据库（自己玩的时候，最好弄一个全新的数据库来玩，不易出奇怪的错）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh.enableSharding(<span class="string">"shard_test"</span>)</span><br></pre></td></tr></table></figure>
+<p>选择切片的集合</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh.shardCollection(<span class="string">"shard_test.test"</span>,&#123;<span class="attr">id</span>:<span class="string">"hashed"</span>&#125;) <span class="comment">/*用hash来选择shard*/</span></span><br></pre></td></tr></table></figure>
+<p>可以用<code>db.stats()</code>和<code>db.test.stats()</code>注意：用<code>use shard_test</code>选择这个数据库</p>
+<p>让我们做一些测试，欣赏一下自己的成果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) db.test.save(&#123;<span class="attr">id</span>:i&#125;); <span class="comment">/*插入1000条document*/</span></span><br></pre></td></tr></table></figure>
+<p>看看结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.test.stats()</span><br></pre></td></tr></table></figure>
+<p>我的测试结果（截取关键部分）：</p>
+<figure>
+<img src="/img/shard_stats1.png" alt="shard_stats1"><figcaption>shard_stats1</figcaption>
+</figure>
+<figure>
+<img src="/img/shard_stats2.png" alt="shard_stats2"><figcaption>shard_stats2</figcaption>
+</figure>
+<p><strong>问题</strong></p>
+<p>出现BadValue: configdb supports only replica set connection string</p>
+<p>答:configServer必须为备份集,因此需要将configServer搭建备份，然后</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongos --configdb replsetname/localhost:<span class="number">27010</span> --port <span class="number">27011</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="备份集使用keyfile认证">备份集使用keyFile认证</h3>
+<blockquote>
+<p>前提：在未认证的情况下已搭好replication sets.若没有，可以看看上面相关的内容</p>
+<p>副本集：127.0.0.1：30000，127.0.0.1：30001，127.0.0.1：30002</p>
+</blockquote>
+<p>第一步：创建keyFile文件</p>
+<p>windows用户可到这里下载<a href="https://sourceforge.net/projects/openssl/?source=typ_redirect" target="_blank" rel="noopener">openssl</a></p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* linux */</span><br><span class="line">openssl rand -base64 <span class="number">756</span> &gt; &lt;path-<span class="keyword">to</span>-keyfile&gt;</span><br><span class="line">chmod <span class="number">600</span> &lt;path-<span class="keyword">to</span>-keyfile&gt;</span><br><span class="line"></span><br><span class="line">/* window */</span><br><span class="line">进入到下载的openssl/bin目录</span><br><span class="line">openssl.exe rand -base64 <span class="number">756</span></span><br><span class="line">把生成的内容复制到<span class="number">1</span>个文件中。</span><br></pre></td></tr></table></figure>
+<p>第二步：将keyFile文件复制到各个副本集中，并在配置文件中指定keyFile的路径。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置文件 #</span></span><br><span class="line"><span class="attr">replication:</span></span><br><span class="line"><span class="attr">  replSetName:</span> <span class="string">product-repl</span></span><br><span class="line"><span class="attr">net:</span></span><br><span class="line"><span class="attr">  bindIp:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">30000</span></span><br><span class="line"><span class="attr">storage:</span></span><br><span class="line"><span class="attr">  dbPath:</span> <span class="attr">C:\mongodb-product\primary\db</span></span><br><span class="line"><span class="attr">security:</span> </span><br><span class="line"><span class="attr">  keyFile:</span> <span class="attr">C:\mongodb-product\primary\keyfile</span></span><br></pre></td></tr></table></figure>
+<p>第三步：重启所有副本集</p>
+<p>第四步：创建管理员和普通用户（可选）</p>
+<p>用mongo shell连接上primary节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br><span class="line"></span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: <span class="string">"adminUser"</span>,</span><br><span class="line">    pwd: <span class="string">"adminPass"</span>,</span><br><span class="line">    roles: [ &#123; <span class="attr">role</span>: <span class="string">"root"</span>, <span class="attr">db</span>: <span class="string">"admin"</span> &#125; ] <span class="comment">/* 这里role选“root”，不要按照官方文档指定userAdminAnyDatabase*/</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 认证 */</span></span><br><span class="line">db.auth(<span class="string">"adminUser"</span>, <span class="string">"adminPass"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*创建普通用户,示例DB:demo */</span></span><br><span class="line">use demo</span><br><span class="line"></span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: <span class="string">"spring"</span>,</span><br><span class="line">    pwd: <span class="string">"spring"</span>,</span><br><span class="line">    roles: [ &#123; <span class="attr">role</span>: <span class="string">"readWrite"</span>, <span class="attr">db</span>: <span class="string">"demo"</span> &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这样所有的副本集都设定好用户了。需要认证。</p>
+<p>第五步：利用MongoDB Java Driver连接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*mongodb-uri的形式尝试了多次后报错，这种方式能够良好工作*/</span></span><br><span class="line">ArrayList&lt;ServerAddress&gt; nodeList = <span class="keyword">new</span> ArrayList&lt;ServerAddress&gt;();</span><br><span class="line">nodeList.add(<span class="keyword">new</span> ServerAddress(<span class="string">"127.0.0.1"</span>, <span class="number">30000</span>));</span><br><span class="line">nodeList.add(<span class="keyword">new</span> ServerAddress(<span class="string">"127.0.0.1"</span>, <span class="number">30001</span>));</span><br><span class="line">nodeList.add(<span class="keyword">new</span> ServerAddress(<span class="string">"127.0.0.1"</span>, <span class="number">30002</span>));</span><br><span class="line">List&lt;MongoCredential&gt; mongoCredentialList = <span class="keyword">new</span> ArrayList&lt;MongoCredential&gt;();</span><br><span class="line">mongoCredentialList.add(MongoCredential.createCredential(<span class="string">"spring"</span>, <span class="string">"demo"</span>,<span class="string">"spring"</span>.toCharArray()));</span><br><span class="line">mongoClient = <span class="keyword">new</span> MongoClient(nodeList, mongoCredentialList);</span><br><span class="line"></span><br><span class="line">String database = <span class="string">"demo"</span></span><br><span class="line">MongoDatabase mongoDatabase = mongoClient.getDatabase(database);</span><br><span class="line">System.out.println(<span class="string">"Connect to database:"</span> + database + <span class="string">" successfully"</span>);</span><br><span class="line">String collectionName = <span class="string">"demo-collection"</span>;</span><br><span class="line">collection = mongoDatabase.getCollection(collectionName);</span><br><span class="line">System.out.println(<span class="string">"集合 "</span> + collectionName + <span class="string">" 选择成功"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="参考">参考</h3>
+<p><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" class="uri" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></p>
+<p><a href="https://www.jianshu.com/p/79caa1cc49a5" class="uri" target="_blank" rel="noopener">https://www.jianshu.com/p/79caa1cc49a5</a></p>
+<p><a href="https://www.cnblogs.com/ityouknow/p/6828919.html" class="uri" target="_blank" rel="noopener">https://www.cnblogs.com/ityouknow/p/6828919.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/on-the-origin-of-species/" rel="next" title="物种起源·浅读">
+                <i class="fa fa-chevron-left"></i> 物种起源·浅读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/20/the-non-designer's design-book/" rel="prev" title="写个大家看的设计书·浅读">
+                写个大家看的设计书·浅读 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">3.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作"><span class="nav-number">4.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份集使用keyfile认证"><span class="nav-number">5.</span> <span class="nav-text">备份集使用keyFile认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

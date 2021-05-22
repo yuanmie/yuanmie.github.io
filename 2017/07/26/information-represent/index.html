@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C 链接 Linux ELF," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.整数表示 本文约定,默认是二进制编码表示, 表现形式为X的向量组\([x_{w-1} x_{w-2} ... x_0]\) , w默认为32.  无符号数 无符号数指大于等于0的整数.比如10表示为 \([00000000000000000000000000001010]\) 则计算方式为 \[ Y = \sum_{i=0}^{w-1} x_i  2^{i} \] 有符号数">
+<meta name="keywords" content="C 链接 Linux ELF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息的表示和处理">
+<meta property="og:url" content="http://yuanmie.github.io/2017/07/26/information-represent/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="1.整数表示 本文约定,默认是二进制编码表示, 表现形式为X的向量组\([x_{w-1} x_{w-2} ... x_0]\) , w默认为32.  无符号数 无符号数指大于等于0的整数.比如10表示为 \([00000000000000000000000000001010]\) 则计算方式为 \[ Y = \sum_{i=0}^{w-1} x_i  2^{i} \] 有符号数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-07T09:36:24.795Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="信息的表示和处理">
+<meta name="twitter:description" content="1.整数表示 本文约定,默认是二进制编码表示, 表现形式为X的向量组\([x_{w-1} x_{w-2} ... x_0]\) , w默认为32.  无符号数 无符号数指大于等于0的整数.比如10表示为 \([00000000000000000000000000001010]\) 则计算方式为 \[ Y = \sum_{i=0}^{w-1} x_i  2^{i} \] 有符号数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2017/07/26/information-represent/"/>
+
+
+
+
+
+  <title>信息的表示和处理 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2017/07/26/information-represent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">信息的表示和处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T09:31:10+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSAPP笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">CSAPP笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="整数表示">1.整数表示</h2>
+<p>本文约定,默认是二进制编码表示, 表现形式为X的向量组<span class="math inline">\([x_{w-1} x_{w-2} ... x_0]\)</span> , w默认为32.</p>
+<ul>
+<li><p>无符号数</p>
+<p>无符号数指大于等于0的整数.比如10表示为</p>
+<p><span class="math inline">\([00000000000000000000000000001010]\)</span></p>
+<p>则计算方式为 <span class="math display">\[
+Y = \sum_{i=0}^{w-1} x_i  2^{i}
+\]</span></p></li>
+<li><p>有符号数</p>
+<p>有符号数能表示负数和非负数,一般采用补码(two’s-complement),比如-10表示为</p>
+<p><span class="math display">\[[11111111111111111111111111110110]\]</span></p>
+<p>则计算方式为 <span class="math display">\[
+Y = -x_{w-1} 2^{w-1} + \sum_{i=0}^{w-2} x_i 2^{i}
+\]</span> <a id="more"></a></p></li>
+<li><p>相互转换</p>
+<p>无符号数与有符号树相互转换,位不变,只是改变了解释的方式.</p></li>
+<li><p>扩展</p>
+<p>为了简单,我们假设将w=8,扩展到16,符号<span class="math inline">\(\cdot\)</span>之前的是扩展的位</p>
+<ul>
+<li><p>无符号数扩展 <span class="math display">\[
+[x_{w-1}x_{w-2}...x_0] \to^{extend} [00000000 \cdot x_{w-1}x_{w-2}...x_0]
+\]</span></p></li>
+<li><p>有符号数扩展 <span class="math display">\[
+[x_{w-1}x_{w-2}...x_0] \to^{extend} [x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}x_{w-1}\cdot x_{w-1}x_{w-2}...x_0]
+\]</span></p></li>
+</ul></li>
+<li><p>截断</p>
+<p>截断和扩展相反.设K为截断的位.无符号数和有符号数都是相同的操作,截断后的数按照之前的数表示方式来解释. <span class="math display">\[
+[x_{k-1}x_{k-1}x_{k-2}x_{k-3}\dots x_{0}\cdot x_{w-1}x_{w-2}...x_0]\to^{trunc} [x_{w-1}x_{w-2}...x_0]
+\]</span></p></li>
+</ul>
+<h2 id="整数运算">2. 整数运算</h2>
+<ul>
+<li><p>无符号加法</p>
+<p>设无符号数<span class="math inline">\(u_1\)</span>和<span class="math inline">\(u_2\)</span>,则 <span class="math display">\[
+u_1 + u_2 = (u_1 + u_2)  \mod 2^w
+\]</span></p></li>
+<li><p>有符号加法</p>
+<p>设有符号数<span class="math inline">\(s_1\)</span>和<span class="math inline">\(s_2\)</span>,<span class="math inline">\(U2S\)</span>是无符号转成有符号,<span class="math inline">\(S2U\)</span>是有符号转成无符号,则 <span class="math display">\[
+s_1 + s_2 = U2S((S2U(s_1)+S2U(s_2))\mod 2^w)
+\]</span></p></li>
+<li><p>补码的非</p>
+<p>对于补码<span class="math inline">\(x\)</span>,则补码的非为 <span class="math display">\[
+-x = \begin{cases}
+-2^{w-1} ,&amp;\quad x = -2^{w-1}
+\\
+-x, &amp;\quad x &gt; -2^{w-1}
+\end{cases}
+\]</span></p></li>
+<li><p>无符号乘法</p>
+<p>设无符号数<span class="math inline">\(u_1\)</span>和<span class="math inline">\(u_2\)</span>,则 <span class="math display">\[
+u_1 \cdot u_2 = (u_1 \cdot u_2)  \mod 2^w
+\]</span></p></li>
+<li><p>补码乘法 <span class="math display">\[
+s_1 \cdot s_2 = U2S((s_1 \cdot s_2) \mod 2^w)
+\]</span></p></li>
+<li><p>乘以常数</p>
+<p>在多数机器上,整数乘法指令相当慢,需要10个或更多时钟周期,其他整数运算指令(如加法,减法,移位)只需要1个时钟周期.因为,编译器会使用一种优化,试着用移位和加法操作的组合来代替乘以常数因子的乘法.</p>
+<p>更具象一点,举一个例子<span class="math inline">\(x \cdot 14(2^3 + 2^2 + 2^1)\)</span>, 则可能会优化成<span class="math inline">\((x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)\)</span></p></li>
+<li><p>除以2的幂</p>
+<p>在多数机器上,整数除法指令比乘法指令更慢,故编译器可以用右移操作来优化一些除法操作.</p>
+<ul>
+<li><p>无符号数</p>
+<p>采用逻辑右移操作 <span class="math display">\[
+x / 2^k = x &gt;&gt; k
+\]</span></p></li>
+<li><p>有符号数</p>
+<p>采用算术右移操作,但是计算机除法会造成舍入操作,比如会把-5/2舍入为-3,结果应该是-2.为处理这种情况,我们需要偏置这个除数.</p>
+<p>原理:<span class="math inline">\(\lceil x/y \rceil = \lfloor (x+y-1)/y\rfloor\)</span> ,故整个公式为 <span class="math display">\[
+x/2^k = \begin{cases}
+x &gt;&gt;&gt; k,&amp;\quad x &gt;= 0
+\\
+(x + (1 &lt;&lt; k) + 1) &gt;&gt;&gt; k, &amp;\quad x &lt; 0
+\end{cases}
+\]</span></p></li>
+</ul></li>
+</ul>
+<h2 id="浮点数">3. 浮点数</h2>
+<ul>
+<li><p>浮点数表示</p>
+<p>IEEE浮点标准用<span class="math inline">\(V= (-1)^s \times M \times 2^E\)</span> 的形式来表示一个数.</p>
+<ul>
+<li><p>符号(sign) <span class="math inline">\(s\)</span> 决定这个数是负数<span class="math inline">\((s=1)\)</span>还是正数<span class="math inline">\((s=0)\)</span>,对于数值0的符号位解释视为特殊情况</p></li>
+<li><p>尾数<span class="math inline">\(M\)</span> 是一个二进制小数,它的范围是<span class="math inline">\(1 \sim 2-\varepsilon\)</span> 或者是<span class="math inline">\(0 \sim 1-\varepsilon\)</span></p></li>
+<li><p>阶码<span class="math inline">\(E\)</span>的作用是对浮点数加权,这个权重是2的<span class="math inline">\(E\)</span>次幂</p>
+<p>将浮点数的位表示划分为三个字段,分别对这些值进行编码:</p></li>
+<li><p>一个单独的符号位<span class="math inline">\(s\)</span>直接编码符号<span class="math inline">\(s\)</span></p></li>
+<li><p>k位的阶码字段<span class="math inline">\(exp=e_{k-1}\dots e_1 e_0\)</span>编码阶段<span class="math inline">\(E\)</span></p></li>
+<li><p>n位小数字段<span class="math inline">\(frac=f_{n-1} \dots f_1 f_0\)</span> 编码尾数<span class="math inline">\(M\)</span>,但是编码出来的值也依赖阶码字段的值是否等于0</p>
+<p>下面给出float(32 bit)和double(64 bit)的简陋示意图</p>
+<p>float:</p>
+<table>
+<thead>
+<tr class="header">
+<th>s(31)</th>
+<th>exp(30:23)</th>
+<th>frac(22:0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(s = 1\)</span></td>
+<td><span class="math inline">\(k = 8\)</span></td>
+<td><span class="math inline">\(n = 23\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>double:</p>
+<table>
+<thead>
+<tr class="header">
+<th>s(63)</th>
+<th>exp(62:52)</th>
+<th>frac(51:0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(s = 1\)</span></td>
+<td><span class="math inline">\(k = 11\)</span></td>
+<td><span class="math inline">\(n = 52\)</span></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>根据exp的值,被编码的值可以分为三种不同的情况(最后一种情况有2个变种),以float为例:</p>
+<ol type="1">
+<li><p>规格化的,位表示如下<span class="math inline">\([s|\ne 0 \&amp; \ne 255|frac]\)</span></p>
+<p>这种情况下,阶码字段被解释为<em>偏置</em>(biased)形式表示的有符号数整数.也就是说<span class="math inline">\(E = e - Bias\)</span>, 其中<span class="math inline">\(e\)</span>是无符号数,就是上文提到的<span class="math inline">\(exp\)</span>, <span class="math inline">\(Bias\)</span>是一个等于<span class="math inline">\(2^{k-1}-1\)</span>的偏置值.对小数字段<span class="math inline">\(frac\)</span>的解释为描述小数值<span class="math inline">\(f\)</span>,其中<span class="math inline">\(0 \le f \lt 1\)</span>,其二进制表示为<span class="math inline">\([0.f_{n-1}\cdots f_1 f_2]\)</span>.尾数定义为<span class="math inline">\(M = 1 + f\)</span>.</p></li>
+<li><p>非规格化的.位表示为<span class="math inline">\([s|00000000|frac]\)</span></p>
+<p>在这种情况下, 阶码值是<span class="math inline">\(E = 1 - Bias\)</span>, 而尾数的值是<span class="math inline">\(M = f\)</span></p></li>
+<li><p>特殊值</p>
+<ol type="1">
+<li>无穷大,位表示为<span class="math inline">\([s|11111111|00000000000000000000000]\)</span></li>
+<li>NaN,位表示为<span class="math inline">\([s|00000000|\ne 0]\)</span></li>
+</ol></li>
+</ol></li>
+</ul>
+<h2 id="浮点数舍入">4.浮点数舍入</h2>
+<p>​ 浮点数默认舍入方式是向偶数舍入</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-链接-Linux-ELF/" rel="tag"># C 链接 Linux ELF</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/19/red-black-tree-md/" rel="next" title="RED-BLACK-TREE(红黑树)">
+                <i class="fa fa-chevron-left"></i> RED-BLACK-TREE(红黑树)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/06/computer-basic-knowledge/" rel="prev" title="搞定计算机基础">
+                搞定计算机基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整数表示"><span class="nav-number">1.</span> <span class="nav-text">1.整数表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数运算"><span class="nav-number">2.</span> <span class="nav-text">2. 整数运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数"><span class="nav-number">3.</span> <span class="nav-text">3. 浮点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数舍入"><span class="nav-number">4.</span> <span class="nav-text">4.浮点数舍入</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

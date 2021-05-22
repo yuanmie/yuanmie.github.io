@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 私认为计算机基础分为6大块：数据结构与算法，操作系统，离散数学，编译原理，数据库原理和计算机网络。 数据结构与算法 数据结构包括栈，队列，链表，树，图。 算法有动态规划算法，贪心算法， 排序算法， 搜索算法">
+<meta name="keywords" content="计算机基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搞定计算机基础">
+<meta property="og:url" content="http://yuanmie.github.io/2017/10/06/computer-basic-knowledge/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="前言 私认为计算机基础分为6大块：数据结构与算法，操作系统，离散数学，编译原理，数据库原理和计算机网络。 数据结构与算法 数据结构包括栈，队列，链表，树，图。 算法有动态规划算法，贪心算法， 排序算法， 搜索算法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yuanmie.github.io/img/tcp-establised.png">
+<meta property="og:image" content="http://yuanmie.github.io/img/tcp-shutdown.png">
+<meta property="og:updated_time" content="2018-04-07T10:04:09.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搞定计算机基础">
+<meta name="twitter:description" content="前言 私认为计算机基础分为6大块：数据结构与算法，操作系统，离散数学，编译原理，数据库原理和计算机网络。 数据结构与算法 数据结构包括栈，队列，链表，树，图。 算法有动态规划算法，贪心算法， 排序算法， 搜索算法">
+<meta name="twitter:image" content="http://yuanmie.github.io/img/tcp-establised.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2017/10/06/computer-basic-knowledge/"/>
+
+
+
+
+
+  <title>搞定计算机基础 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2017/10/06/computer-basic-knowledge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">搞定计算机基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T19:00:10+08:00">
+                2017-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言">前言</h2>
+<p>私认为计算机基础分为6大块：数据结构与算法，操作系统，离散数学，编译原理，数据库原理和计算机网络。</p>
+<h2 id="数据结构与算法">数据结构与算法</h2>
+<p>数据结构包括栈，队列，链表，树，图。</p>
+<p>算法有动态规划算法，贪心算法， 排序算法， 搜索算法 <a id="more"></a> ### 栈和队列</p>
+<ul>
+<li><p>Stack是一种LIFO(Last In First Out)的结构</p>
+<p>Stack的应用范围非常广，比如JVM就是基于Stack模型的机器</p></li>
+<li><p>Queue是一种LILO(Last In Last Out)的结构</p></li>
+</ul>
+<h3 id="链表">链表</h3>
+<ul>
+<li><p>单向链接</p>
+<p>一般用next连接下一个结点</p></li>
+<li><p>双向链表</p>
+<p>一般用next连接下一个结点，用previous连接上一个结点</p></li>
+<li><p>单向循环链表</p>
+<p>链表的最后一个结点的next连接链表的第一个结点</p></li>
+<li><p>双向循环链表</p>
+<p>链表的最后一个结点的next连接链表的第一个结点，第一个结点的previous连接最后一个节点</p></li>
+</ul>
+<h3 id="树">树</h3>
+<ul>
+<li><p>二叉搜索树</p>
+<p>二叉搜索树insert，delete，search的复杂度为<span class="math inline">\(O(logn)\)</span></p></li>
+<li><p>红黑树</p>
+<p>前面说了二叉搜索树的复杂度为<span class="math inline">\(0(logn)\)</span>,但实际中可能恶化成<span class="math inline">\(O(n)\)</span>,比如所有的元素都是有序插入的.因此引出了平衡二叉树。平衡二叉树尽力使得树的高度更小，故会尽可能充分的利用左右结点，会造成左子树与右子树高度之差不会超过1。</p>
+<p><a href="https://yuanmie.github.io/2017/06/19/red-black-tree-md/">之前写的文章</a></p></li>
+<li><p>B树</p>
+<p>晚上写</p></li>
+</ul>
+<h3 id="图">图</h3>
+<p>在数学上，图表示物体与物体之间的关系。图由<strong>顶点</strong>与<strong>边</strong>构成。我们根据<strong>边</strong>的有无<strong>权重</strong>, 有无<strong>方向</strong>,分为以下情况：</p>
+<ul>
+<li><p>无向图</p>
+<ul>
+<li><p>DFS</p>
+<p>Depth-First-Search.深度优先搜索</p>
+<p>一条一条的支线搜索，利用递归实现。</p></li>
+<li><p>BFS</p>
+<p>Breadth-First-Search.宽度优先搜索</p>
+<p>一层一层的搜索 ，利用Queue缓存顶点实现。</p></li>
+</ul></li>
+<li><p>无向加权图</p></li>
+<li><p>有向图</p></li>
+<li><p>有向加权图</p>
+<ul>
+<li><p>Shortest Path</p>
+<ul>
+<li><p>Dijkstra Algorithm<span class="math inline">\((o(n^2))\)</span></p>
+<p>主要解决单点s最短路径问题。2个数组:距离数组d,初始化为无穷大, 前驱数组previous，初始化为null.将s的邻结点加入queue中，并设置好2个数组中这些顶点的值。之后从queue取出顶点x，看x的邻结点的是否有更短的路径<span class="math inline">\(d[z] &gt; d[x] + w(x, z)\)</span>,有则更新previous和d.重复此过程直到queue为空。</p>
+<p>语言描述不清楚，代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sp</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">		distTo[s] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(DirectedWeightGraph.Edge e : wg.adj(s))&#123;</span><br><span class="line">			distTo[e.end()] = e.weight();</span><br><span class="line">			edgeTo[e.end()] = s;</span><br><span class="line">			queue.add(e.end());</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">				<span class="keyword">int</span> v = queue.poll();</span><br><span class="line">			</span><br><span class="line">				<span class="keyword">for</span>(DirectedWeightGraph.Edge e1 : wg.adj(v))&#123; <span class="comment">//N</span></span><br><span class="line">					queue.add(e1.end()); <span class="comment">//N * N</span></span><br><span class="line">					<span class="keyword">if</span>(distTo[e1.end()] &gt; distTo[v] + e1.weight())&#123;</span><br><span class="line">						distTo[e1.end()] = distTo[v] + e1.weight();</span><br><span class="line">						edgeTo[e1.end()] = v;</span><br><span class="line">						</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p></li>
+</ul></li>
+<li><p>Minimum Spanning Tree</p>
+<ul>
+<li><p>KruskalMST<span class="math inline">\((O(ElogE))\)</span></p>
+<p>将所有的边放入一个优先队列中，依次拿出最小权重的一条。如果该边的2个端点不在MST中，则往MST加入这条边，直到所有的结点都在MST中。</p></li>
+<li><p>PrimMST<span class="math inline">\((O(Elog|V|))\)</span></p>
+<p>从某一个结点X开始，将该节点领接边加入一个优先队列中，选择队列中最小权重的一条边，如果该边的2个端点不在MST中，则往MST加入这条边，让这条边的末端结点成为X，循环上诉的步骤直到所有的结点都在MST中。</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="动态规划算法">动态规划算法</h3>
+<h3 id="贪心算法">贪心算法</h3>
+<p>每次都选择最佳效果的选择，KruskalMST就是贪心算法的一个例子</p>
+<h3 id="排序算法">排序算法</h3>
+<ul>
+<li><p>快速排序(不稳定 <span class="math inline">\(O(nlogn)\)</span>)</p>
+<p>主要的思想是划分，将数组划分为2部分，小于等于分界点和大于分界点的。一直递归的划分下去，直到不用划分。</p></li>
+<li><p>堆排序(不稳定 <span class="math inline">\(O(nlogn)\)</span>)</p>
+<p>​将待排序数组建堆，然后每次将顶点与末尾结点互换，将堆大小减一，然后重新调整堆（sink），重复。</p></li>
+<li><p>归并排序(稳定 <span class="math inline">\(O(nlogn)\)</span>)</p>
+<p>主要思想是将2个已排序好的数组归并排序成一个排序数组。先从2个只包含一个元素的数组开始归并，然后递归的进行。</p></li>
+<li><p>希尔排序(不稳定 <span class="math inline">\(O(n^{\frac{2}{3}})\)</span>或者<span class="math inline">\(O(nlog^2n)\)</span>)</p>
+<p>感觉叫间隔排序。先排序按一定间隔的数组排序，然后将间隔变小，继续排序。知道间隔为1.间隔选择不同，复杂度也不一样。</p></li>
+<li><p>选择排序(稳定 <span class="math inline">\(O(n^2)\)</span>)</p>
+<p>​待排序集合<span class="math inline">\(E\)</span>, 选出最大值<span class="math inline">\(A\)</span>, <span class="math inline">\(E \to {E - A}\)</span>,再选择最大值<span class="math inline">\(A\)</span>,重复知道<span class="math inline">\(E \to 0\)</span>。</p></li>
+<li><p>插入排序(稳定 <span class="math inline">\(O(n^2)\)</span>)</p>
+<p>将元素一个个从头插入</p></li>
+<li><p>冒泡排序(稳定 <span class="math inline">\(O(n^2)\)</span>)</p>
+<p>和冒泡类似，每次循环把最大的值冒到最后。</p></li>
+</ul>
+<h3 id="搜索算法">搜索算法</h3>
+<ul>
+<li><p>线性搜索</p>
+<p><span class="math inline">\(O(n)\)</span></p></li>
+<li><p>二分搜索</p>
+<p><span class="math inline">\(O(logn)\)</span></p>
+<ul>
+<li>树搜索也是其中一种类型</li>
+</ul></li>
+<li><p>Hash</p>
+<p><span class="math inline">\(O(1)\)</span></p>
+<p>计算key的hash值，搜索的时候直接看hash table中有没有key hash的位置有没有值。</p>
+<p>解决hash冲突的有以下方法：</p>
+<ul>
+<li>链表法</li>
+<li>开放定址法</li>
+<li>再hash法</li>
+</ul></li>
+</ul>
+<h2 id="操作系统">操作系统</h2>
+<h3 id="信息的表示">信息的表示</h3>
+<p><a href="">信息的表示</a></p>
+<h3 id="进程和线程">进程和线程</h3>
+<p>进程是计算机的一个基本单位。进程包括进程块，程序。在内核中有进程调度表来调度进程。</p>
+<p>多进程通信方式：</p>
+<ul>
+<li><p>管道</p></li>
+<li><p>信号(signal)</p></li>
+<li><p>消息队列</p>
+<p>进程发送消息，另一个进程接收线性。系统级实现。</p></li>
+<li><p>共享内存</p></li>
+<li><p>信号量(semaphore)</p>
+<p>主要用于进程间同步</p></li>
+<li><p>套接字(socket)</p>
+<p>可用于本机和跨主机进程通信</p></li>
+</ul>
+<p>线程是进程的一个基本单位。线程共享进程内的数据。这就引发一些竞争状态。</p>
+<p>我们通常会利用锁进制来处理并发冲突：</p>
+<ul>
+<li><p>悲观锁</p>
+<p>每次获取数据的时候，都会担心数据被修改，所以每次获取数据的时候都会进行加锁，确保在自己使用的过程中数据不会被别人修改，使用完成后进行数据解锁。由于数据进行加锁，期间对该数据进行读写的其他线程都会进行等待。</p>
+<p>悲观锁：比较适合写入操作比较频繁的场景，如果出现大量的读取操作，每次读取的时候都会进行加锁，这样会增加大量的锁的开销，降低了系统的吞吐量。</p></li>
+<li><p>乐观锁</p>
+<p>每次获取数据的时候，都不会担心数据被修改，所以每次获取数据的时候都不会进行加锁，但是在更新数据的时候需要判断该数据是否被别人修改过。如果数据被其他线程修改，则不进行数据更新，如果数据没有被其他线程修改，则进行数据更新。由于数据没有进行加锁，期间该数据可以被其他线程进行读写操作。</p>
+<p>乐观锁：比较适合读取操作比较频繁的场景，如果出现大量的写入操作，数据发生冲突的可能性就会增大，为了保证数据的一致性，应用层需要不断的重新获取数据，这样会增加大量的查询操作，降低了系统的吞吐量。</p>
+<p>例子：CAS(compare and set),一般会使用值value和版本version，来避免ABA问题。</p>
+<p>总结：两种所各有优缺点，读取频繁使用乐观锁，写入频繁使用悲观锁。</p></li>
+</ul>
+<p>进程和线程都有几率造成死锁。死锁是指多个进程/线程循环等待彼此占有的资源而无限期的僵持等待下去的局面。</p>
+<h3 id="虚拟存储器">虚拟存储器</h3>
+<p>虚拟存储器为进程提供了一个假象，仿佛进程使用的是一个连续无限的地址空间（虚拟存储器的关键就是对地址空间的管理），所谓的磁盘空间换内存只是虚拟存储器的一个结果，而并非目的。</p>
+<p>页表，是管理页的（内存以页为单位，页大小一般为4KB）。一般用多级页表来管理（节省内存）。</p>
+<p>虚拟存储器将虚拟地址转为物理地址。虚拟存储器系统拿到虚拟地址，查找页表，找到页表中一项。如果命中，则说明相应的物理页是缓存在内存中的，否则就触发缺页异常。</p>
+<h2 id="计算机网络">计算机网络</h2>
+<h3 id="http">HTTP</h3>
+<p>HTTP底层使用的TCP，每次建立HTTP连接都必须建立TCP连接。</p>
+<p>HTTP报文格式</p>
+<table>
+<thead>
+<tr class="header">
+<th>通用首部字段</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Date</td>
+<td>创建报文时间</td>
+</tr>
+<tr class="even">
+<td>Connection</td>
+<td>连接的管理</td>
+</tr>
+<tr class="odd">
+<td>Cache-Control</td>
+<td>缓存的控制</td>
+</tr>
+<tr class="even">
+<td>Transfer-Encoding</td>
+<td>报文主体的传输编码方式</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>请求报文</p>
+<ul>
+<li><p>header</p>
+<table>
+<thead>
+<tr class="header">
+<th>Host</th>
+<th>请求资源所在服务器</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accept</td>
+<td>可处理的媒体类型</td>
+</tr>
+<tr class="even">
+<td>Accept-Charset</td>
+<td>可接收的字符集</td>
+</tr>
+<tr class="odd">
+<td>Accept-Encoding</td>
+<td>可接受的内容编码</td>
+</tr>
+<tr class="even">
+<td>Accept-Language</td>
+<td>可接受的自然语言</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>content</p>
+<p>Allow：资源可支持的HTTP方法 Content-Type：实体主类的类型 Content-Encoding：实体主体适用的编码方式 Content-Language：实体主体的自然语言 Content-Length：实体主体的的字节数 Content-Range：实体主体的位置范围，一般用于发出部分请求时使用</p></li>
+</ul></li>
+<li><p>响应报文</p>
+<ul>
+<li><p>header</p>
+<p>Accept-Ranges：可接受的字节范围 Location：令客户端重新定向到的URI Server：HTTP服务器的安装信息</p></li>
+<li><p>content</p>
+<p>Allow：资源可支持的HTTP方法 Content-Type：实体主类的类型 Content-Encoding：实体主体适用的编码方式 Content-Language：实体主体的自然语言 Content-Length：实体主体的的字节数 Content-Range：实体主体的位置范围，一般用于发出部分请求时使用</p></li>
+</ul></li>
+</ul>
+<h3 id="tcp">TCP</h3>
+<ul>
+<li><p>三次握手</p>
+<p>有2个主机client和server，它们要建立TCP连接，需要经过以下3个步骤：</p>
+<ol type="1">
+<li>client向server发送一个SYN来创建一个主动打开，这个SYN的序号seq设定为随机数R</li>
+<li>server回送一个SYN/ACK.ACK=R+1, SYN的seq设定为随机数X</li>
+<li>client回送一个ACK，ACK=X+1 <img src="/img/tcp-establised.png" alt="tcp-establised"></li>
+</ol></li>
+<li><p>四次挥手</p>
+<ol type="1">
+<li>client发送FIN请求<span class="math inline">\(FIN=1, seq = u\)</span>, 进入FIN-WAIT-1阶段</li>
+<li>server收到请求，发送ACK<span class="math inline">\(ACK=1, seq = v, ack = u+1\)</span>,server进入CLOSE-WAIT，client进入FIN-WAIT-2</li>
+<li>server将剩余的数据传送给客户端后，发送FIN请求<span class="math inline">\(FIN=1, ACK=1, seq = w, ack =u+1\)</span></li>
+<li>client收到FIN请求，发送ACK确认<span class="math inline">\(ACK=1,seq=u+1,ack=w+1\)</span>.server收到请求关闭，client在2MSL后关闭。</li>
+</ol>
+<figure>
+<img src="/img/tcp-shutdown.png" alt="tcp-shutdown"><figcaption>tcp-shutdown</figcaption>
+</figure></li>
+<li><p>数据传输</p>
+<p>TCP协议是以包(packet)为单元传送数据的。</p>
+<p>TCP发送方会为每个包设定一个序列号X(seq),当接收方接收了这个包，会发送一个ACK(seq = X+packet.length)请求。下一个包的seq也是这个编号(X+packet.length)。</p>
+<ul>
+<li><p>超时重传</p>
+<p>如果发送方没有收到确认请求，发送方会重传数据。</p></li>
+<li><p>乱序恢复</p>
+<p>假如我们发送了2,3,4个packet过去。3号packet丢失了。那么接收方的ACK会一直为3(ACK的编号总是Max(已接收packet编号)+1),即使收到了4号packet，ACK的编号也不会变。这样发送方就知道3号丢失，然后重新发送3号。只重传3号或重传3号之后所有的就是看采用的TCP的重传策略了。</p></li>
+</ul></li>
+<li><p>流量控制</p>
+<p>TCP使用滑动窗口机制来进行流量控制。</p>
+<p>每一个TCP方都有一个发送窗口和接收窗口。发送窗口的开端总是在已接收ACK编号的位置。当ACK的编号移动时，它就会滑动。接收窗口的大小限定了它发送的数量。</p>
+<p>接收窗口限定了此刻接收方还能接收的数量。接收窗口的开端总是在已接收数据+1的位置。</p></li>
+<li><p>拥塞处理</p>
+<ul>
+<li><p>慢开始</p>
+<p>在最开始的时候，设CWND(congestion window)为一个MSS(Maximum Segment Size).在每一个传输回合后，大小*2，直到阀值(ssthresh)</p></li>
+<li><p>拥塞避免</p>
+<p>让CWND缓慢增大，每一次来回增加1.当超过慢开始阀值(ssthresh),开始进行拥塞避免算法。2种情况：</p>
+<ol type="1">
+<li>乘法减少.不论是慢开始还是拥塞避免阶段，只要出现超时重传的情况，就将ssthresh减半</li>
+<li>加分增大。执行拥塞避免算法后，为避免过早出现拥塞，是CWND缓慢增大</li>
+</ol></li>
+<li><p>快重传算法</p>
+<p>发送方只要连续收到3个重复确认就应重传对方尚未收到的数据包，而不必等到超时。</p></li>
+<li><p>快恢复算法</p>
+<ul>
+<li>当发送方收到3个连续的重复确认。开始实行乘法减少算法。但不执行慢开始算法</li>
+<li>乐观估计网络并没有发送拥塞，实行加分增大算法，是CWND线性缓慢增长。</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="udp">UDP</h3>
+<p>​ UDP是一种无状态，不可靠的传输协议。UDP没有超时重传等机制，所以多用于real-time.UDP是面向数据报的，而且可以广播(broadcasts)</p>
+<h2 id="编译原理">编译原理</h2>
+<h3 id="编译与解释">编译与解释</h3>
+<p>编译：编译基本分为这4个阶段：预处理，编译，汇编，链接</p>
+<ul>
+<li>链接
+<ul>
+<li>动态链接</li>
+<li>静态链接</li>
+</ul></li>
+</ul>
+<p>解释：底部是虚拟机支持（也可不用），用一种语言模拟另一种语言</p>
+<h3 id="前端">前端</h3>
+<p>词法分析：将单个字符合并成有意义的单词</p>
+<p>语法分析：将单词流构建成安装编程语言的<strong>语法/文法</strong>生成语法树</p>
+<p>常见的文法有LL(n), LR(n), LALR(n)，我比较喜欢的是<strong>递归下降法</strong>来解析LL文法</p>
+<p>语义分析：分析语法树是否符合语法规范，进行type check等操作</p>
+<h3 id="后端">后端</h3>
+<p>中间代码生成：将语法树转换成IR， 利于优化。常用三地址形式的IR</p>
+<p>优化：公共子表达式折叠，无用代码消除。</p>
+<p>指令选择：利用动态规划来选择指令</p>
+<p>寄存器分配：图着色算法，线性扫描算法。</p>
+<p>作品：</p>
+<p><a href="">JSON</a></p>
+<p><a href="">KScheme</a></p>
+<p><a href="">KCC</a></p>
+<h2 id="数据库原理">数据库原理</h2>
+<h3 id="sql">SQL</h3>
+<ul>
+<li>事务
+<ul>
+<li>ACID
+<ul>
+<li>原子性(Atomicity)</li>
+<li>一致性(Consistency)</li>
+<li>隔离性(Isolation)</li>
+<li>持久性(Durability)</li>
+</ul></li>
+<li>四种隔离级别
+<ul>
+<li>串行化</li>
+<li>可重复读：事务A，B并行。如果另外一个事务B新增，删除了数据，事务A看不到这种变化。比如user表有9条数据，事务B删除了一条数据，事务A执行select * from user 还是会得到结果9.这就是幻读</li>
+<li>读取已提交：事务B删除/修改了一条数据并提交了，事务A可见，能看到这种变化。</li>
+<li>读取未提交：事务B删除/修改了一条数据(不用提交)，事务A可见，能看到这种变化.如果事务B回滚，事务A读到的数据就是无效的，这就是脏读。</li>
+</ul></li>
+</ul></li>
+<li>索引
+<ul>
+<li>核心数据结构是B+树</li>
+</ul></li>
+</ul>
+<h2 id="离散数学">离散数学</h2>
+<p>未完待续</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机基础/" rel="tag"># 计算机基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/26/information-represent/" rel="next" title="信息的表示和处理">
+                <i class="fa fa-chevron-left"></i> 信息的表示和处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/04/Java-Web/" rel="prev" title="JavaEE 技术栈">
+                JavaEE 技术栈 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构与算法"><span class="nav-number">2.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链表"><span class="nav-number">2.1.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树"><span class="nav-number">2.2.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图"><span class="nav-number">2.3.</span> <span class="nav-text">图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划算法"><span class="nav-number">2.4.</span> <span class="nav-text">动态规划算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心算法"><span class="nav-number">2.5.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序算法"><span class="nav-number">2.6.</span> <span class="nav-text">排序算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索算法"><span class="nav-number">2.7.</span> <span class="nav-text">搜索算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">3.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息的表示"><span class="nav-number">3.1.</span> <span class="nav-text">信息的表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程"><span class="nav-number">3.2.</span> <span class="nav-text">进程和线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟存储器"><span class="nav-number">3.3.</span> <span class="nav-text">虚拟存储器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">4.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">4.1.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp"><span class="nav-number">4.2.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#udp"><span class="nav-number">4.3.</span> <span class="nav-text">UDP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译原理"><span class="nav-number">5.</span> <span class="nav-text">编译原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译与解释"><span class="nav-number">5.1.</span> <span class="nav-text">编译与解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端"><span class="nav-number">5.2.</span> <span class="nav-text">前端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后端"><span class="nav-number">5.3.</span> <span class="nav-text">后端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库原理"><span class="nav-number">6.</span> <span class="nav-text">数据库原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql"><span class="nav-number">6.1.</span> <span class="nav-text">SQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散数学"><span class="nav-number">7.</span> <span class="nav-text">离散数学</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

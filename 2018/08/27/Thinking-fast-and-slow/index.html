@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="read," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这个可能是我看的最艰难的一本书。当然，看到了很多有趣的东西，我觉得是非常值得。 书本包含的东西较多，在此只做简短的笔记。 Part 1 系统1， 系统2 我们给大脑分配2种虚拟角色，分别是系统1和系统2。系统1负责直觉之类，系统2负责更深入的思考。我们大部分时间都用系统1，比如红绿灯，吃饭等等。当系统1碰到难题时，才会求助系统2，而系统2是懒惰的。而系统1并不是时刻都正确，有时候我们会做出错">
+<meta name="keywords" content="read">
+<meta property="og:type" content="article">
+<meta property="og:title" content="思考 快与慢">
+<meta property="og:url" content="http://yuanmie.github.io/2018/08/27/Thinking-fast-and-slow/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="这个可能是我看的最艰难的一本书。当然，看到了很多有趣的东西，我觉得是非常值得。 书本包含的东西较多，在此只做简短的笔记。 Part 1 系统1， 系统2 我们给大脑分配2种虚拟角色，分别是系统1和系统2。系统1负责直觉之类，系统2负责更深入的思考。我们大部分时间都用系统1，比如红绿灯，吃饭等等。当系统1碰到难题时，才会求助系统2，而系统2是懒惰的。而系统1并不是时刻都正确，有时候我们会做出错">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-27T13:48:05.500Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="思考 快与慢">
+<meta name="twitter:description" content="这个可能是我看的最艰难的一本书。当然，看到了很多有趣的东西，我觉得是非常值得。 书本包含的东西较多，在此只做简短的笔记。 Part 1 系统1， 系统2 我们给大脑分配2种虚拟角色，分别是系统1和系统2。系统1负责直觉之类，系统2负责更深入的思考。我们大部分时间都用系统1，比如红绿灯，吃饭等等。当系统1碰到难题时，才会求助系统2，而系统2是懒惰的。而系统1并不是时刻都正确，有时候我们会做出错">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2018/08/27/Thinking-fast-and-slow/"/>
+
+
+
+
+
+  <title>思考 快与慢 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2018/08/27/Thinking-fast-and-slow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">思考 快与慢</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-27T21:47:00+08:00">
+                2018-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index">
+                    <span itemprop="name">notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这个可能是我看的最艰难的一本书。当然，看到了很多有趣的东西，我觉得是非常值得。</p>
+<p>书本包含的东西较多，在此只做简短的笔记。</p>
+<h4 id="part-1-系统1-系统2">Part 1 系统1， 系统2</h4>
+<p>我们给大脑分配2种虚拟角色，分别是系统1和系统2。系统1负责直觉之类，系统2负责更深入的思考。我们大部分时间都用系统1，比如红绿灯，吃饭等等。当系统1碰到难题时，才会求助系统2，而系统2是懒惰的。而系统1并不是时刻都正确，有时候我们会做出错误的决定。</p>
+<p><strong>联想的神奇力量</strong></p>
+<p>联想是系统1的一个运行过程，而且都是自主发生的，无需费力。我们看到，接触的事物会引发我们的联想，这份联想继而会影响我们的行为。比如你看到一些描述老年的词汇，让你想到了老年，你走路的步伐会无意识的变慢。</p>
+<p>常见的动作会不知不觉的影响到我们的想法和错觉。比如当你觉得高兴时会微笑，而微笑也会使你高兴。</p>
+<a id="more"></a>
+<p><strong>你的直觉可能是错觉</strong></p>
+<p>任何能使联想机制运行更轻松、更顺利的事物都会使我们心生偏见。想让人们相信谬误有个可靠的方法，那就是不断重复。使字迹更清晰，说话言简意赅，易于记忆都会使人们更容易相信。</p>
+<p><strong>眼见为实</strong></p>
+<p>眼见为实的想法往往让我们仓促做出决定。系统1善于提取当前激活的想法来构建最可信的故事，一旦构建的情景具有连贯性，系统1则会仓促的下决定。眼见即为事实的理念有助于达成连贯性和认知放松的状态，从而使我们相信某个陈述时真实的。</p>
+<p>故不要一味的相信眼见为实。</p>
+<p><strong>思维发散性</strong></p>
+<p>系统1并不完全遵循系统2的指令，总是无意识会做一些多余的事情，这就是思维的发散性。</p>
+<p><strong>启发式</strong></p>
+<p>对于有难度的问题，我们总是很难快速找到令人满意的答案，此时系统1就会找到相关问题来回答，这个问题比原来的问题更易作答。这个过程叫做“替代”，这个简单的问题称为“启发性问题”，原来的问题称为“目标问题”。</p>
+<p><strong>情感启发式</strong>：因为喜欢，所以认同。这有点像光环效应。</p>
+<p>系统2主要是系统1的监视器，还具有主动搜寻记忆功能、复杂计算功能、比较功能、规划功能和决策功能。系统2似乎处于最高决策地位，并有能力抵制系统1的建议，它能使事情放缓，开始进行逻辑分析。自我批评是系统2的功能之一。但在态度方面，系统2更像是系统1的赞许者。</p>
+<h4 id="part-2-启发法与偏见">Part 2 启发法与偏见</h4>
+<p><strong>小数定律</strong></p>
+<p>人们对样本的大小没有敏感性。</p>
+<p>系统1并不善于质疑，它抑制了不明确的信息，不由自主地将信息处理得尽可能连贯。除非该信息被立刻否定，不然，它引发的联想就会扩散开，仿佛这条信息就是千真万确的。</p>
+<p>向随机事件作出因果解释是无用的，但我们习惯将事情用因果关系解释。</p>
+<p><strong>锚定效应</strong></p>
+<p>人们对某一未知量的特殊价值进行评估之前，总会事先对这个量进行一番考量，此时锚定效应就会产生。我们估测的结果会和锚定值接近。这个锚定值可能是别人故意暗示的，或是根本无意义的数字，都会影响我们的思考。</p>
+<h5 id="可得性启发法">可得性启发法</h5>
+<p>通过“实例呈现在脑中的轻松程度”来判断概率的过程。当人们想要估算某类事件的出现频率是怎么做的？答案很简单：从记忆中搜寻此类问题的实例，如果搜寻过程既轻松又顺畅，这些事情的发生概率就会被判断为很大。因此，问题的替换必然会产生系统性错误，导致一些<strong>可得性偏见</strong>。</p>
+<h5 id="效用层叠">效用层叠</h5>
+<p>可得性偏见会影响人们的情绪，如恐慌和焦虑。而情绪又会影响我们的判断和决策。这种现象称为<strong>情绪启发法</strong>。当你赞同某类事情时，就会认为此类事物风险小，好处多。而当恐惧或厌恶这些事物时，则会夸大其风险性和缺点。效用层叠是一连串事件，它可能开始于一些相对次要的事件的媒体报道，然后会引起公众恐慌和大规模的政府行动。<strong>我们的感性细节掌控了理性大局</strong>。</p>
+<h5 id="依据典型性作出预测是下意识的行为">依据典型性作出预测是下意识的行为</h5>
+<p>依据典型性作出预测可能是对的，比如“在大多数情况下，表现得很友好得人实际上也很友好。”。但也有可能是错的，因为典型性会使人们忽视<strong>基础比率</strong>。我们铭记：</p>
+<ul>
+<li>以相对合理得基础比率对结果得可能性做出判断</li>
+<li>质疑你对证据的分析</li>
+</ul>
+<p><strong>因果关系比统计学信息根据说服力</strong></p>
+<p>统计信息常常被人们忽视，而如果一件事有着连贯的因果关系，人们就越相信它发生的概率大，即使这些事件的概率很小。</p>
+<p>书中一句有趣的话：</p>
+<p>“这些受试者不愿从普遍现象中推导出特殊性，这一点与他们愿意从特殊现象归纳出普遍性如出一辙”</p>
+<p><strong>所有表现都会回归平均值</strong></p>
+<p>第一轮表现出色的，可能之后就表现差。第一轮表现差的，可能之后表现出色。这无关批评与奖励，而是回归平均值导致的。</p>
+<h4 id="part3-过度自信与决策错误">Part3 过度自信与决策错误</h4>
+<p><strong>“知道”的错觉</strong></p>
+<p>光环效应与后见之明。当事情发生后，人们会错误的以为之前就“知道”会发生了。通过强大的“眼见即为事实”，会产生结果偏见。而结果偏见会带来“光环效应”。比如做过几次幸运的冒险的CEO被人认为是“优秀的”，就戴上了某种光环。人们相信他/它有某种过人之处，实际上只是运气较好。所有人的表现都和平均线差不多。</p>
+<p>当糟糕的事情发生了，这种后见之明也会给事件决策人带来更多的批判。人们认为决策人应该早就意识到事件会发生了。可未来是不可知的。</p>
+<p><strong>未来是不可预测的</strong></p>
+<p>专家们（包括普通人）认为自己可以预测未来，但专家预测的准确度比不上扔飞镖的猴子。这其中的原因是“认知错觉”（或技能错觉）。这无关他们的技能，而是所处的世界就是不可预测的。</p>
+<p><strong>直觉判断与公式运算</strong></p>
+<p>不管何时，只要公式能替代人工判断，我们至少应该考虑一下运算法。接上面的话题，大多数主观的判断还不如简单的运算法靠谱。</p>
+<p><strong>何时才能相信专家的直觉</strong></p>
+<p>先描述结论：一个直觉要有效，需满足以下两个条件</p>
+<ul>
+<li>一个可预测的、有足够规律可循的环境</li>
+<li>一次通过长期训练学习这些规律的机会</li>
+</ul>
+<p>这就是为什么象棋大师，消防员及艺术鉴赏师的直觉有效，而股票专家，市场专家的直觉无效的原因。主观自信并不是评定直觉的有效性的依据。</p>
+<p><strong>努力养成采纳外部意见的决策习惯</strong></p>
+<p>人们总陷入<strong>规划谬误</strong>的陷阱，规划谬误是指：计划过于乐观，然而由于沉没成本又不忍停止计划，最终的花费超出预计太多。比起外部意见，人们倾向于内部意见。如果做计划时，严格的参考外部的情况，那人们就不会制定过于理想的计划，现实中总是有各种出乎意料的状况发生。而不是想：我可不会像别人一样，我的计划能顺利执行。事实上，别人踩过的坑，大概率情况你也要经历。</p>
+<p><strong>乐观主义是一柄双刃剑</strong></p>
+<p>乐观主义可以让我们勇敢的面对人生的风风雨雨。但这次主要描述乐观主义偏见。人们总是以为自己懂得比实际知道的多，高估自己成功的概率等等。比如著名的90%的出租车司机认为比其他人技术好，竞争忽视导致大片扎堆上映。有效抑制乐视主义偏见的手段是“事前验尸”：假设我们的计划失败了，请花5-10分钟写下我们失败的原因。在开始时就思考可能失败的原因，让我们正视失败的风险，发现潜在的危险。</p>
+<h4 id="part4-选择与风险">Part4 选择与风险</h4>
+<p>在盈利的情况下，人们更青睐于稳赚。在损失的情况下，人们更愿意冒险一搏。</p>
+<p>损失厌恶：人们对亏损的反应比对盈余的反应大的多</p>
+<p><strong>禀赋效应</strong>：</p>
+<p>禀赋效应指当个人一旦拥有某个物品，那么他对该物品价值的评价要比未拥有之前大大提高。正是这个效应的存在，人们不愿意割舍自己已拥有的东西。克服这个效应的好方法就是“像商人一样思考和交易”，贸易经验多了，禀赋效应的影响就小了。</p>
+<p><strong>公平性–经济交易的参照点</strong></p>
+<p>我们会选择一个参照点，目标实现没到参照点就是损失，目标实现超过参照点就是盈余。由于人们对于损失反应的强度比盈余反应的强度大得多，所以人们更倾向于保持现状。</p>
+<p>“这项改革肯定无法通过。那些必然受损得人会比那些获利得人更加强烈得反对这种做法”</p>
+<p><strong>对结果可能性的权衡</strong></p>
+<p>大部分的权衡都是由系统1决定的。主要涉及2个效应：<strong>可能性效应</strong>和<strong>确定性效应</strong>。</p>
+<p>举个例子，从0到5%的转变就表现了可能性效应，人们会高估那些出现可能性小的结果的概率。从95%到100%的转变会引发确定性效应。人们愿意花费更多来确保100%发生。</p>
+<p><strong>被过分关注的罕见事件</strong></p>
+<p>人们高估了罕见事件的概率。画面感越强，决策权重越大。</p>
+<p><strong>分母忽视</strong>，人们总是过于关注一件事情的分子（特例），而不是分母（总体样本数），看一下这道有趣的题</p>
+<p>A罐中有10个球，其中有1个是红色的</p>
+<p>B罐中有100个球，其中有8个是红色的</p>
+<p>若拿到红球，则有奖励。你会选哪个？</p>
+<p><strong>能带来长远收益的风险政策</strong></p>
+<p>窄框架：分别思考单个的简单的决策问题</p>
+<p>宽框架：思考综合决策问题</p>
+<p>人们偏爱于窄框架。但我们要像个商人思考，要强迫自己用宽框架思考。</p>
+<p><strong>心理账户是如何影响我们的选择的</strong></p>
+<p>你会卖掉盈利的股票还是亏损的股票？据金融研究展示了大量的人们出售自己的盈利股，保留亏损股的偏见。这个叫做<strong>处置效应</strong>。实际上保留盈利股会带来更多的收益。</p>
+<p><strong>沉没成本悖论</strong>：对亏损的项目进行额外投资的决策。真是讽刺，明明亏损了还有继续投钱，由于沉没成本导致更多沉没成本。</p>
+<p><strong>后悔</strong>：人们对由于采取行动而导致的结果，会比因不行动而产生的结果有更多强烈的情绪（包括后悔）。人们因为害怕将来后悔而做出不理想的选择。做决定的时候，不要太过关注之后是否会后悔，由于“心理免疫系统”存在，后悔令人痛心的程度也绝对比你想象中要轻。</p>
+<p><strong>善用框架效应，让生活更美好</strong></p>
+<p>同样的事实，换一种说法就引发了人们的框架效应。损失比成本引起更强烈的负面情绪。对于损失，要在大脑中将其引入“一般收入”，这样就会感觉好一点。示例：</p>
+<p>若某赌注有10%的概率赢得95美元， 有90%的概率损失5美元，你会接受这个赌注吗？</p>
+<p>若某彩票有10%的概率赢得100美元， 有90%的概率什么也得不到，你愿意花5美元买这张彩票吗？</p>
+<h4 id="两个自我">两个自我</h4>
+<p>我们体内有2个自我：记忆自我与体验自我。</p>
+<p><strong>峰终定律</strong>：整体的回顾性评级可通过最糟糕时期和最后时刻的疼痛程度的平均加权而评估出来</p>
+<p><strong>过程忽视</strong>：过程的持续对所有疼痛的评估没有任何影响</p>
+<p>正是因为这2个定律，我们的记忆并没有那么可靠。我们的记忆有时夸大了痛苦的体验。快乐的事情却因结尾的不顺，留下了糟糕的记忆，我们忽视了过程。</p>
+<p><strong>人生如戏</strong>，比起整个人生，我们更在乎人生的结局。</p>
+<p><strong>你有多幸福？</strong></p>
+<p>增强幸福感的最简单方法是分配好你的时间，抽出更多的时间做自己喜欢做的事情。</p>
+<p>贫穷使人悲惨，富有可能会提升某个人的生活满意度，但总体来说却不能提高经验自我的幸福感。如果你的收入超过了满意水平，你能够拥有更多使人愉快的经历，但你将会丧失一些享受小乐趣的能力。</p>
+<p><strong>被放大了的幸福错觉</strong></p>
+<p><strong>聚集错觉</strong>，当人们关注生活的任意方面时，对它的评估会被放大。当你想买iPhone时，你会想到iPhone可能会带来种种好处。实际上并不是如此。</p>
+<p><strong>γνῶθι σεαυτόν </strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/read/" rel="tag"># read</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/get-better/" rel="next" title="人生算法">
+                <i class="fa fa-chevron-left"></i> 人生算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#part-1-系统1-系统2"><span class="nav-number">1.</span> <span class="nav-text">Part 1 系统1， 系统2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part-2-启发法与偏见"><span class="nav-number">2.</span> <span class="nav-text">Part 2 启发法与偏见</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#可得性启发法"><span class="nav-number">2.1.</span> <span class="nav-text">可得性启发法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#效用层叠"><span class="nav-number">2.2.</span> <span class="nav-text">效用层叠</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#依据典型性作出预测是下意识的行为"><span class="nav-number">2.3.</span> <span class="nav-text">依据典型性作出预测是下意识的行为</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part3-过度自信与决策错误"><span class="nav-number">3.</span> <span class="nav-text">Part3 过度自信与决策错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#part4-选择与风险"><span class="nav-number">4.</span> <span class="nav-text">Part4 选择与风险</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个自我"><span class="nav-number">5.</span> <span class="nav-text">两个自我</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="math statistics," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这里是学习统计学的一些笔记. 总体:要研究的一组对象,人或事物 采样:从总体采集有代表性的样本,有随机采样与非随机采样 样本:总体的一个子集 均值:如果有一个n个值的样本\(x_{i}\)​.那么它的均值\(\mu\)就等于样本的总和除于样本的数量 \[ \mu = \frac{1}{n}\sum_{i}x_i \] 方差:样本的分散情况\(\sigma^2\) \[ \sigma">
+<meta name="keywords" content="math statistics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学之基本知识">
+<meta property="og:url" content="http://yuanmie.github.io/2017/12/20/statistics-basic/index.html">
+<meta property="og:site_name" content="碎碎念">
+<meta property="og:description" content="这里是学习统计学的一些笔记. 总体:要研究的一组对象,人或事物 采样:从总体采集有代表性的样本,有随机采样与非随机采样 样本:总体的一个子集 均值:如果有一个n个值的样本\(x_{i}\)​.那么它的均值\(\mu\)就等于样本的总和除于样本的数量 \[ \mu = \frac{1}{n}\sum_{i}x_i \] 方差:样本的分散情况\(\sigma^2\) \[ \sigma">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-23T02:23:31.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="统计学之基本知识">
+<meta name="twitter:description" content="这里是学习统计学的一些笔记. 总体:要研究的一组对象,人或事物 采样:从总体采集有代表性的样本,有随机采样与非随机采样 样本:总体的一个子集 均值:如果有一个n个值的样本\(x_{i}\)​.那么它的均值\(\mu\)就等于样本的总和除于样本的数量 \[ \mu = \frac{1}{n}\sum_{i}x_i \] 方差:样本的分散情况\(\sigma^2\) \[ \sigma">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yuanmie.github.io/2017/12/20/statistics-basic/"/>
+
+
+
+
+
+  <title>统计学之基本知识 | 碎碎念</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碎碎念</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-read">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            好读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-science">
+          <a href="/science/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />
+            
+            理工科
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-zenlife">
+          <a href="/life/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            乐生活
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yuanmie.github.io/2017/12/20/statistics-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yuanmie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碎碎念">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">统计学之基本知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T10:10:10+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这里是学习统计学的一些笔记.</p>
+<p><strong>总体</strong>:要研究的一组对象,人或事物</p>
+<p><strong>采样</strong>:从总体采集有代表性的样本,有随机采样与非随机采样</p>
+<p><strong>样本</strong>:总体的一个子集</p>
+<p><strong>均值</strong>:如果有一个n个值的样本<span class="math inline">\(x_{i}\)</span>​.那么它的均值<span class="math inline">\(\mu\)</span>就等于样本的总和除于样本的数量</p>
+<p><span class="math display">\[
+\mu = \frac{1}{n}\sum_{i}x_i
+\]</span> <strong>方差</strong>:样本的分散情况<span class="math inline">\(\sigma^2\)</span> <span class="math display">\[
+\sigma^2 = \frac{1}{n}\sum_i(x_i - \mu)^2
+\]</span> <strong>标准差</strong>:方差的平方根<span class="math inline">\(\sigma\)</span></p>
+<a id="more"></a>
+<p>分布**:样本中各个值出现的频繁程度</p>
+<p><strong>频数</strong>:样本中一个值出现的次数</p>
+<p><strong>概率</strong>:频数除于样本大小</p>
+<p><strong>概率质量函数(Probability Mass Function)</strong>:将值转换为概率的函数<span class="math inline">\(PMF\)</span></p>
+<p><strong>累计分布函数CDF(Cumulative Distribution Function)</strong>:PMF函数的累计,公式为: <span class="math display">\[
+CDF_X(x) = PMF(X &lt; x)
+\]</span> <strong>归一化(Normalization)</strong>:将数据进行转换,使其均值为0,方差为1</p>
+<p><strong>众数</strong>:分布中出现的最多的数</p>
+<p><strong>异常值</strong>:远离总数的值</p>
+<p><strong>条件概率</strong>:依赖于某个条件的概率.</p>
+<p><strong>指数分布</strong>:</p>
+<p><strong>帕累托分布</strong>:</p>
+<p><strong>正态分布</strong>:</p>
+<p><strong>概率</strong>:介于0到1之间的值,对应于定性的描述某一件事发生的可能性的大小<span class="math inline">\(P\)</span>.这应该是一个更通用的定义.</p>
+<p><strong>事件</strong>:被赋予概率的事情称为事件<span class="math inline">\(E\)</span>.</p>
+<p><strong>试验</strong>:检测事件发生情况的过程.</p>
+<p><strong>概率计算</strong>:假设有事件<span class="math inline">\(A\)</span>和事件<span class="math inline">\(B\)</span></p>
+<ul>
+<li><p>若事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>是相互独立的 <span class="math display">\[
+P(AB) = P(A)P(B)
+\]</span></p></li>
+<li><p>若事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>不独立 <span class="math display">\[
+P(AB) = P(A)P(B|A)
+\]</span></p></li>
+<li><p>若事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>是互斥的 <span class="math display">\[
+P(A|B) = P(B|A) = 0
+\]</span></p></li>
+<li><p>一般情况 <span class="math display">\[
+P(A或B) = P(A) + P(B) - P(AB)
+\]</span></p></li>
+</ul>
+<p><strong>伯努利试验</strong>:在同样的条件下,重复的,相互独立的进行的一种随机试验.其结果只有2种可能:发生(概率为<span class="math inline">\(p\)</span>)或不发生(概率为<span class="math inline">\(1-p\)</span>).</p>
+<p><strong>二项分布</strong>:即重复<span class="math inline">\(n\)</span>次的伯努利分布.</p>
+<p>计算发生<span class="math inline">\(k\)</span>次指定事件的概率: <span class="math display">\[
+PMF(k) =  \binom{n}{k}p^k(1-p)^{n-k}
+\]</span></p>
+<p><span class="math display">\[
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+\]</span></p>
+<p><strong>蒙特卡罗模拟</strong>:模拟随机系统计算概率的过程.</p>
+<p><strong>贝叶斯定理</strong>:两个事件的条件概率之间的关系.条件概率写成<span class="math inline">\(P(A|B)\)</span>,表示的是在事件<span class="math inline">\(B\)</span>已发生的情况下事件<span class="math inline">\(A\)</span>发生的概率.<span class="math inline">\(P(A|B)\)</span>称为后验概率,<span class="math inline">\(P(A)\)</span>称为先验概率.<span class="math inline">\(P(B|A)\)</span>称为似然值.<span class="math inline">\(P(B)\)</span>称为归一化常量. <span class="math display">\[
+P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+\]</span> <strong>概率密度函数PDF(Probability density function)</strong>:累积分布函数的导数.表示的是一种概率密度,而不是概率.概率密度衡量的是<span class="math inline">\(x\)</span>轴上每个单位的概率.为了得到随机变量<span class="math inline">\(X\)</span>落在某个区间的概率,我们可以计算概率密度函数在这段区间的微分. <span class="math display">\[
+P(a \le x \le b) = \int^{a}_{b}PDF_X(X)dx
+\]</span></p>
+<p><strong>卷积</strong>:计算两个随机变量的和的分布.不同于卷积网络的卷积.</p>
+<p><strong>正态分布的性质</strong>:</p>
+<p>若一个随机变量<span class="math inline">\(X\)</span>服从参数<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma\)</span>的正态分布,记做 <span class="math display">\[
+X \sim \mathcal{N}(\mu, \sigma^2)
+\]</span> 若<span class="math inline">\(X&#39; = aX + b\)</span>,则 <span class="math display">\[
+X&#39; \sim \mathcal{N}(a\mu+b, a^2\sigma^2)
+\]</span> 若<span class="math inline">\(Z=X+Y\)</span>,且$X (_X, {_X}^2) <span class="math inline">\(和\)</span> Y(_Y, {_Y}^2)$,则 <span class="math display">\[
+Z \sim \mathcal{N}(\mu_X+\mu_Y, {\sigma_X}^2+{\sigma_Y}^2)
+\]</span> <strong>中心极限原理</strong>:如果将大量服从某种分布的值加起来,所得到的和会收敛到正态分布.</p>
+<p>假设随机变量X的均值和标准差为<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma\)</span>,那么<span class="math inline">\(n\)</span>个随机变量<span class="math inline">\(X\)</span>的和渐进的服从<span class="math inline">\(\mathcal{N}(n\mu, n\sigma^2)\)</span></p>
+<p><strong>均方误差MSE(Mean Squared Error)</strong>: <span class="math display">\[
+MSE= \frac{1}{m}\sum(\hat x - \mu)^2
+\]</span> <strong>极大似然估计值</strong>:使得似然函数最大化的估计</p>
+<p><strong>协方差</strong>:</p>
+<p><strong>残差</strong>:预测值与实际值的差——————-<span class="math inline">\(\epsilon = \hat y - y\)</span></p>
+<p><strong>最小二乘拟合</strong>:最小化残差的平方和————-<span class="math inline">\(\min\sum{\epsilon_i^2}\)</span>.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/math-statistics/" rel="tag"># math statistics</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/04/front-end/" rel="next" title="前端学习">
+                <i class="fa fa-chevron-left"></i> 前端学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/27/seven-physical-classes/" rel="prev" title="七堂极简物理课">
+                七堂极简物理课 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="yuanmie" />
+            
+              <p class="site-author-name" itemprop="name">yuanmie</p>
+              <p class="site-description motion-element" itemprop="description">追求内心的宁静</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yuanmie" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://xhay1122.com/" title="xhay" target="_blank">xhay</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuanmie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
